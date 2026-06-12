@@ -1,49 +1,45 @@
+// components/Hero.tsx
 import Image from "next/image";
+import Navbar from "./Navbar";
 
 interface HeroProps {
-    title: string;
-    subtitle: string;
     backgroundImage: string;
 }
 
-export default function Hero({ title, subtitle, backgroundImage }: HeroProps) {
+export default function Hero({ backgroundImage }: HeroProps) {
     return (
-        <section className="relative flex h-screen w-full items-center justify-center overflow-hidden bg-gray-900 text-white">
+        <section className="relative flex h-screen w-full flex-col overflow-hidden bg-white">
+            {/* The Navigation Bar (Top-layer content) */}
+            <Navbar />
+
             {/* Background Image Container */}
             <div className="absolute inset-0 z-0">
+                {/* Background Image */}
                 <Image
                     src={backgroundImage}
-                    alt="Hero Background"
+                    alt="株式会社"
                     fill
                     priority
-                    className="object-cover object-center brightness-50"
+                    className="object-cover object-center"
                     sizes="100vw"
                 />
+
+                {/* Dark Overlay Filter for Readability */}
+                {/* The 'opacity-30' sets a 30% black filter over the image */}
+                <div className="absolute inset-0 bg-black opacity-30 z-10" />
             </div>
 
-            {/* Content Container (Centered) */}
-            <div className="relative z-10 max-w-4xl px-6 text-center">
-                <h1 className="mb-4 text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-                    {title}
+            {/* Centered Text Content (Placed above the overlay) */}
+            <div className="relative z-20 flex flex-grow flex-col items-center justify-center px-6 text-center">
+                {/* Large, Red Main Title */}
+                <h1 className="text-7xl font-extrabold tracking-tight text-red-600 sm:text-8xl md:text-9xl lg:text-[140px]">
+                    赤団HP
                 </h1>
-                <p className="mx-auto max-w-2xl text-lg text-gray-200 sm:text-xl md:text-2xl/relaxed">
-                    {subtitle}
-                </p>
-            </div>
 
-            {/* Optional: Scroll Down Indicator Arrow */}
-            <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 animate-bounce">
-                <svg
-                    className="h-6 w-6 text-gray-400"
-                    fill="none"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                >
-                    <path d="M19 14l-7 7-7-7m14-6l-7 7-7-7"></path>
-                </svg>
+                {/* White Subtitle (Pop against the new dark filter!) */}
+                <p className="mt-6 max-w-3xl text-xl font-semibold text-white sm:text-2xl md:text-3xl">
+                    次世代のショッピング体験を創造する
+                </p>
             </div>
         </section>
     );

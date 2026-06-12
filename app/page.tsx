@@ -4,11 +4,7 @@ import Hero from "./components/Hero";
 export default function Home() {
     return (
         <div className="">
-            <Hero
-                title={"赤団HP"}
-                subtitle={"ショッピングサイトの説明を含むサブ見出し"}
-                backgroundImage={"/img/hero-bg.png"}
-            />
+            <Hero backgroundImage={"/img/hero-bg.png"} />
         </div>
     );
 }
