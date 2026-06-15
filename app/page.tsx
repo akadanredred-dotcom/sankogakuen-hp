@@ -4,6 +4,7 @@ import SanFesSection from "./components/Main";
 import AkadanSection from "./components/react";
 import ArticleSection from "./components/ArticleSection";
 import ShopSection from "./components/ShopSection";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
@@ -12,7 +13,7 @@ export default function Home() {
       <SanFesSection />
       <AkadanSection />
       <ArticleSection />
-     
+      <Footer />
     </div>
   );
 }

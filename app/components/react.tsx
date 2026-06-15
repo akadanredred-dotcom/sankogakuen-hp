@@ -9,7 +9,7 @@ export default function AkadanPage() {
         alt="赤団 豹牙"
         fill
         priority
-        className="object-cover object-center"
+        className="object-cover re object-center"
       />
 
       <div className="absolute inset-0 bg-black/45 z-10" />

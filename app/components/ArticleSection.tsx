@@ -1,36 +1,133 @@
-interface ArticleCardProps {
-  title: string;
-  summary: string;
+import React from 'react';
+
+interface MemberProps {
+  name: string;
+  role: string;
+  imageUrl: string;
 }
 
-function ArticleCard({ title, summary }: ArticleCardProps) {
+// 1人分のカードコンポーネント
+function MemberCard({ name, role, imageUrl }: MemberProps) {
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden group hover:shadow-md transition-shadow">
-      <div className="h-48 bg-gray-200 flex items-center justify-center text-gray-400">
-        画像プレースホルダー
+    <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col items-center p-4 hover:shadow-md transition-shadow">
+      {/* 顔写真エリア */}
+      <div className="relative w-full aspect-square rounded-lg overflow-hidden bg-gray-900 border-4 border-red-600 mb-4">
+        <img
+          src={imageUrl}
+          alt={`${name}の顔写真`}
+          className="w-full h-full object-cover object-center grayscale hover:grayscale-0 transition-all duration-300"
+        />
+        {/* 左上の「赤団」斜めラベル */}
+        <div className="absolute top-0 left-0 bg-red-600 text-white text-[10px] font-bold px-3 py-1 uppercase tracking-wider transform -rotate-12 -translate-x-1 translate-y-1 shadow">
+          赤団
+        </div>
       </div>
-      <div className="p-6">
-        <h3 className="font-bold text-xl mb-2 group-hover:text-red-600 transition-colors">{title}</h3>
-        <p className="text-gray-600 text-sm">{summary}</p>
+      {/* 名前と役職 */}
+      <div className="text-center">
+        <h3 className="font-bold text-gray-900 mb-0.5">{name}</h3>
+        <p className="text-xs font-semibold text-red-600 tracking-wide">{role}</p>
       </div>
     </div>
   );
 }
 
-export default function ArticleSection() {
-  const articles = [
-    { title: '記事タイトル 1', summary: 'ここに1つ目の記事の概要やリード文が入ります。' },
-    { title: '記事タイトル 2', summary: 'ここに2つ目の記事の概要やリード文が入ります。' },
+export default function ShopMembers() {
+  // 予算0円でそのまま使える、高品質なフリー素材（人物・アジアンテイスト）の直リンクURL
+  const members = [
+    {
+      name: '小宮 遥斗',
+      role: '団長',
+      imageUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
+    },
+    {
+      name: '井田 星南',
+      role: '副団長',
+      imageUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
+    },
+    {
+      name: '泉 哲平',
+      role: '副団長',
+      imageUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80',
+    },
+    {
+      name: '新井 真季',
+      role: '副団長',
+      imageUrl: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80',
+    },
+    {
+      name: '渥美 美月',
+      role: '副団長',
+      imageUrl: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80',
+    },
+    {
+      name: '高山 桃悠',
+      role: '副団長',
+      imageUrl: 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=400&q=80',
+    },
   ];
 
   return (
-    <section id="article" className="scroll-mt-20">
-      <h2 className="text-3xl font-bold border-b-2 border-red-600 pb-2 mb-6">Article</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {articles.map((article, index) => (
-          <ArticleCard key={index} title={article.title} summary={article.summary} />
+    <section id="shop-members" className="scroll-mt-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      
+      {/* 三か条・ヘッダーエリア */}
+      <div className="text-center max-w-xl mx-auto mb-12">
+        <h2 className="text-2xl md:text-3xl font-extrabold text-red-600 tracking-widest border-b-2 border-red-600 pb-2 mb-4 inline-block">
+          三か条
+        </h2>
+        <p className="text-gray-600 text-xs md:text-sm leading-relaxed mb-6">
+          このセクションのサブ見出しは、長くても短くても構いません。
+        </p>
+        {/* ボタン群 */}
+        <div className="flex justify-center space-x-4">
+          <button className="bg-red-600 hover:bg-red-700 text-white font-bold text-xs px-6 py-2.5 rounded shadow transition-colors">
+            ボタン
+          </button>
+          <button className="bg-white hover:bg-gray-50 text-gray-700 border border-gray-300 font-bold text-xs px-6 py-2.5 rounded shadow-sm transition-colors">
+            セカンダリボタン
+          </button>
+        </div>
+      </div>
+
+      {/* メンバーグリッド (Figma通りの3列x2段レイアウト、スマホでは1列) */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        {members.map((member, index) => (
+          <MemberCard
+            key={index}
+            name={member.name}
+            role={member.role}
+            imageUrl={member.imageUrl}
+          />
         ))}
       </div>
+
+      {/* 下部のサブ見出しテキストグリッド */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16 border-t border-gray-100 pt-12">
+        <div className="space-y-2">
+          <h4 className="font-bold text-sm text-gray-900 border-l-4 border-red-600 pl-3">⚙️ サブ見出し</h4>
+          <p className="text-gray-500 text-xs leading-relaxed">
+            伝えたいことを自由に書く本文テキスト。要点や引用、ちょっとしたエピソード、短いストーリーなども加えてください。
+          </p>
+        </div>
+        <div className="space-y-2">
+          <h4 className="font-bold text-sm text-gray-900 border-l-4 border-red-600 pl-3">📝 サブ見出し</h4>
+          <p className="text-gray-500 text-xs leading-relaxed">
+            提案したい内容を自由に書く本文テキスト。要点や引用、ちょっとしたエピソード、短いストーリーなども加えてください。
+          </p>
+        </div>
+        <div className="space-y-2">
+          <h4 className="font-bold text-sm text-gray-900 border-l-4 border-red-600 pl-3">🔒 サブ見出し</h4>
+          <p className="text-gray-500 text-xs leading-relaxed">
+            主導したいことを自由に書く本文テキスト。要点や引用、ちょっとしたエピソード、短いストーリーなども加えてください。
+          </p>
+        </div>
+        <div className="space-y-2">
+          <h4 className="font-bold text-sm text-gray-900 border-l-4 border-red-600 pl-3">📅 日付</h4>
+          <p className="text-gray-500 text-xs leading-relaxed">
+            自由に入力できる本文テキスト。要点や引用、ちょっとしたエピソード、短いストーリーなども加えてください。
+          </p>
+        </div>
+      </div>
+
     </section>
   );
 }
