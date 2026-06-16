@@ -140,7 +140,10 @@ export default function ShopMembers() {
             📅 日付
           </h4>
           <p className="text-gray-500 text-xs leading-relaxed">
-            自由に入力できる本文テキスト。要点や引用、ちょっとしたエピソード、短いストーリーなども加えてください。
+           2026年9月14日(月)会場設営、リハーサル
+           <br />
+           2026年9月15日(火)首都圏三幸フェスティバル本番
+
           </p>
         </div>
       </div>
