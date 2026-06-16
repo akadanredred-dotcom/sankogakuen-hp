@@ -19,8 +19,11 @@ export default function AkadanPage() {
           <div className="border-l-[6px] border-red-600 pl-6 py-1">
             <h2 className="text-4xl font-black mb-4 tracking-wider">三か条</h2>
             <p className="text-lg font-medium leading-relaxed text-white/80">
-              このセクションのサブ見出しは、<br />
-              長くても短くても構いません。
+              1. 笑顔
+            <br />
+            2. 元気
+            <br />
+            3. メリハリ
             </p>
           </div>
         </div>

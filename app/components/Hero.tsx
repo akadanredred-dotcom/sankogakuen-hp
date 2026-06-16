@@ -38,7 +38,7 @@ export default function Hero({ backgroundImage }: HeroProps) {
 
         {/* White Subtitle (Pop against the new dark filter!) */}
         <p className="mt-6 max-w-3xl text-xl font-semibold text-white sm:text-2xl md:text-3xl">
-          次世代のショッピング体験を創造するd
+          
         </p>
       </div>
     </section>
