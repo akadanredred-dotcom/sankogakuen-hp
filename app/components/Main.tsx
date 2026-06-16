@@ -17,7 +17,7 @@ export default function SanFesSection() {
       {/* ボタン */}
       <div className="absolute inset-0">
         <a
-          href="#" // ← ここに飛ばしたいURLを入れる
+          href="3fes" // ← ここに飛ばしたいURLを入れる
           className="
             absolute
             left-[47.91%]
