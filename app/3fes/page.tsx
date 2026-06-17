@@ -4,6 +4,7 @@ import Competition from "./components/Competition";
 import Concept from "./components/Concept";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
+import ScrollReveal from "../components/ScrollReveal";
 
 
 export default function Home() {
@@ -24,6 +25,7 @@ export default function Home() {
         <Awards />
         <GoogleMap />
         <Footer />
+        <ScrollReveal children={undefined} />
        
       </div>
     </main>

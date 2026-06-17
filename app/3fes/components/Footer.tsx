@@ -1,12 +1,11 @@
 "use client";
 
-import { useRouter } from "next/navigation"; // 1つ前に戻るために追加
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 export default function Footer() {
-  const router = useRouter(); // routerの初期化
+  const router = useRouter();
 
-  // ページの一番上までスムーズにスクロールして戻る関数
   const scrollToTop = (e) => {
     e.preventDefault();
     window.scrollTo({
@@ -15,13 +14,11 @@ export default function Footer() {
     });
   };
 
-  // マウスが乗った時に下線をつける関数
   const handleMouseEnter = (e, color = "#000000") => {
     e.target.style.color = color;
     e.target.style.textDecoration = "underline";
   };
 
-  // マウスが離れた時に下線を消す関数
   const handleMouseLeave = (e, color = "#606060") => {
     e.target.style.color = color;
     e.target.style.textDecoration = "none";
@@ -32,27 +29,24 @@ export default function Footer() {
       style={{
         backgroundColor: "#ffffff",
         borderTop: "1px solid #e0e0e0",
-        padding: "16px 20px 12px 20px", // 縦のパディングを大幅に狭く (30px/20px -> 16px/12px)
+        padding: "16px 20px 12px 20px",
         fontFamily: "sans-serif",
       }}
     >
-      {/* 3カラム（左・中・右）のレイアウト */}
       <div
         style={{
           maxWidth: "1000px",
           margin: "0 auto",
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-          gap: "16px", // 隙間を狭く (24px -> 16px)
-          alignItems: "center", // 上揃えから中央揃えにして縦幅をコンパクトに
+          display: "flex",
+          flexDirection: "column",
+          gap: "16px",
         }}
       >
         {/* =================【左側ブロック】================= */}
-        <div style={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "12px" }}>
-          {/* サイト名 */}
+        <div style={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "12px", width: "100%" }}>
           <div
             style={{
-              fontSize: "16px", // 少し小さく (20px -> 16px)
+              fontSize: "16px",
               fontWeight: "700",
               color: "#000000",
               letterSpacing: "0.05em",
@@ -61,9 +55,8 @@ export default function Footer() {
             赤団HP
           </div>
 
-          {/* インスタグラム */}
           <div>
-            <a
+            
               href="http://localhost:3000/components"
               target="_blank"
               rel="noopener noreferrer"
@@ -72,7 +65,7 @@ export default function Footer() {
                 display: "inline-flex",
                 alignItems: "center",
                 justifyContent: "center",
-                width: "28px", // 少し小さく (34px -> 28px)
+                width: "28px",
                 height: "28px",
                 borderRadius: "50%",
                 backgroundColor: "#f5f5f5",
@@ -86,7 +79,7 @@ export default function Footer() {
               }
             >
               <svg
-                width="14" // アイコンも少し小さく
+                width="14"
                 height="14"
                 viewBox="0 0 24 24"
                 fill="none"
@@ -108,11 +101,12 @@ export default function Footer() {
           style={{
             display: "flex",
             flexDirection: "row",
-            gap: "20px", // 間隔を少し狭く
+            gap: "20px",
             justifyContent: "center",
             alignItems: "center",
             flexWrap: "wrap",
             fontSize: "13px",
+            width: "100%",
           }}
         >
           <Link
@@ -160,15 +154,15 @@ export default function Footer() {
         <div
           style={{
             display: "flex",
-            flexDirection: "row", // 縦並びから横並びに変更して縦幅を削減
+            flexDirection: "row",
             justifyContent: "flex-end",
             alignItems: "center",
             gap: "16px",
+            width: "100%",
           }}
         >
-          {/* 1つ前に戻るボタン（赤団について） */}
           <button
-            onClick={() => router.back()} // ここで1個前のサイトに戻る
+            onClick={() => router.back()}
             style={{
               background: "none",
               border: "none",
@@ -187,7 +181,7 @@ export default function Footer() {
             赤団について
           </button>
 
-          <a
+          
             href="#"
             onClick={scrollToTop}
             style={{
@@ -209,12 +203,12 @@ export default function Footer() {
       <div
         style={{
           maxWidth: "1000px",
-          margin: "12px auto 0 auto", // 上の余白を狭く (30px -> 12px)
+          margin: "12px auto 0 auto",
           textAlign: "center",
           fontSize: "11px",
           color: "#a0a0a0",
           borderTop: "1px solid #f0f0f0",
-          paddingTop: "8px", // 上のパディングを狭く (15px -> 8px)
+          paddingTop: "8px",
         }}
       >
         &copy; 2026 赤団HP. All rights reserved.
