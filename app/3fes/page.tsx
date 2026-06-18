@@ -24,14 +24,13 @@ export default function Home() {
         <ScrollReveal direction="left">
           <Concept />
         </ScrollReveal>
-
         <ScrollReveal direction="right">
           <Competition />
         </ScrollReveal>
-
         <ScrollReveal direction="left">
           <Awards />
         </ScrollReveal>
+
         <ScrollReveal direction="right">
           <FinaleSongSection />
         </ScrollReveal>
