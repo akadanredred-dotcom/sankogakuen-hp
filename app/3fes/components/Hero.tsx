@@ -1,29 +1,30 @@
-import Navbar from "@/app/components/Navbar";
+'use client';
 
 export default function Hero() {
   return (
-    <section
-      className="relative h-[60vh] flex flex-col items-center justify-center text-center bg-cover bg-center"
-      style={{ backgroundImage: "url('/images/hero-bg.jpg')" }}
-    >
-      {/* 背景のオーバーレイ（文字を読みやすくするため暗くする） */}
-      <div className="absolute inset-0 bg-black/60"></div>
+    <div style={{
+      position: 'relative',
+      height: '60vh',
+      width: '100%',
+      backgroundColor: '#171717',
+      backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), url("/img/sannfessiryou.jpg")',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      textAlign: 'center',
+      padding: '0 20px'
+    }}>
+      <p style={{ fontSize: '35px', fontWeight: 'bold', color: '#e50012', letterSpacing: '0.1em', margin: '0 0 12px 0' }}>
+        2026
+      </p>
+      <br />
+      <h1 style={{ fontSize: '60px', fontWeight: '900', color: '#e50012', margin: '0' }}>
+        三幸学園フェスティバル
+      </h1>
 
-      <Navbar />
-
-      <div className="relative z-10 px-4">
-        <p className="text-sm tracking-widest text-neutral-300 mb-2">
-          サイト名
-        </p>
-        <h1 className="text-4xl md:text-6xl font-bold text-red-600 tracking-wide drop-shadow-lg">
-          三幸学園
-          <br className="md:hidden" />
-          フェスティバル
-        </h1>
-        <p className="text-xs text-neutral-400 mt-4 tracking-wider">
-          ショッピングサイトの説明を含むサブ見出し
-        </p>
-      </div>
-    </section>
+    </div>
   );
 }

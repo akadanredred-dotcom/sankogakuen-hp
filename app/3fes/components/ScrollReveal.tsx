@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState, ReactNode } from 'react';
 
-// TypeScript用の型定義（左、右、上、下なし を指定できるようにする）
 interface ScrollRevealProps {
   children: ReactNode;
   direction?: 'left' | 'right' | 'up' | 'none';
@@ -10,7 +9,7 @@ interface ScrollRevealProps {
 }
 
 export default function ScrollReveal({ children, direction = 'left', delay = 0 }: ScrollRevealProps) {
-  const ref = useRef<HTMLDivElement>(null); // 💡 TypeScriptの型エラーを防止
+  const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -18,12 +17,12 @@ export default function ScrollReveal({ children, direction = 'left', delay = 0 }
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          if (ref.current) observer.unobserve(ref.current); // 一度表示されたら監視を終了
+          if (ref.current) observer.unobserve(ref.current);
         }
       },
       { 
         threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px' // 💡 画面の下端より少し手前で発動させてスムーズに
+        rootMargin: '0px 0px -50px 0px' // 💡 画面の下端より少し手前でスッと発動させる
       }
     );
 
@@ -56,8 +55,7 @@ export default function ScrollReveal({ children, direction = 'left', delay = 0 }
         transform: isVisible ? 'translate(0, 0)' : getInitialTranslate(),
         transition: 'opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1)',
         transitionDelay: `${delay}s`,
-        // 💡 左右からスライドインさせるときに画面横がはみ出してスクロールバーが出ないようにガード
-        overflow: 'hidden', 
+        overflow: 'hidden', // 横揺れ・はみ出し防止
         width: '100%',
       }}
     >

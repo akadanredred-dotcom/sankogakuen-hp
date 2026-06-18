@@ -1,26 +1,57 @@
-export default function Awards() {
+import React from 'react';
+import Image from 'next/image'; // 👈 1. 必ずインポートを追加します！
+
+export default function AwardSection() {
   return (
-    <section className="grid md:grid-cols-2 gap-8 items-center border-t border-neutral-800 pt-16">
-      {/* 左側：テキスト情報 */}
-      <div className="space-y-4 order-2 md:order-1">
-        <h2 className="text-2xl font-bold border-l-4 border-red-600 pl-3">賞について</h2>
-        <p className="text-neutral-400 text-sm">表彰は全部で3つあります</p>
+    <section className="w-full max-w-[1442px] min-h-[400px] mx-auto px-8 py-16 md:px-24 flex flex-col md:flex-row items-center justify-between gap-8 relative bg-[#F7F7F7] overflow-hidden">
+      
+      {/* 背景の淡い装飾（Figmaの背景にある水色やピンクのグラデーションの再現） */}
+      <div className="absolute inset-0 pointer-events-none opacity-60">
+        <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-blue-200/40 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-1/4 w-[250px] h-[250px] bg-pink-200/30 rounded-full blur-3xl"></div>
+      </div>
+
+      {/* 左側：テキスト＆ボタンエリア */}
+      <div className="w-full md:w-1/2 space-y-6 relative z-10">
+        {/* タイトル部分 */}
+        <div className="space-y-2">
+          <div className="flex items-center gap-3">
+            {/* 左側の青い縦線 */}
+            <span className="w-[4px] h-8 bg-[#3B82F6] block rounded-full"></span>
+            <h2 className="text-3xl font-bold tracking-widest text-[#EA580C]">
+              賞について
+            </h2>
+          </div>
+          <p className="text-gray-600 text-base md:text-lg pl-4">
+            表彰は全部で3つあります
+          </p>
+        </div>
         
-        <div className="flex gap-3 pt-2">
-          <button className="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-md text-sm font-semibold transition">
+        {/* ボタンエリア */}
+        <div className="flex flex-wrap gap-4 pl-4">
+          <button className="bg-black text-white px-6 py-3 rounded-md font-medium text-sm hover:bg-gray-800 transition-colors shadow-sm">
             詳しくはこちら
           </button>
-          <button className="border border-neutral-600 hover:bg-neutral-800 text-neutral-300 px-6 py-2 rounded-md text-sm font-semibold transition">
+          <button className="bg-[#E5E7EB] text-gray-800 px-6 py-3 rounded-md font-medium text-sm hover:bg-gray-300 transition-colors shadow-sm">
             セカンダリボタン
           </button>
         </div>
       </div>
 
-      {/* 右側：トロフィー画像など */}
-      <div className="aspect-video bg-neutral-800 rounded-xl overflow-hidden flex items-center justify-center order-1 md:order-2">
-        {/* <img src="/images/trophy.jpg" alt="賞のイメージ" className="w-full h-full object-cover" /> */}
-        <span className="text-neutral-400 text-sm">[ここに賞・トロフィーの画像が入ります]</span>
+      {/* 右側：画像エリア（賞状やトロフィーの写真用グラフィック） */}
+      <div className="w-full md:w-[45%] relative aspect-[4/3] rounded-2xl overflow-hidden shadow-sm bg-white/80 border border-gray-100 flex items-center justify-center z-10">
+        {/* 👈 2. コメントアウトを解除し、指定の画像パスに書き換えました */}
+        <Image 
+          src="/img/sannfessiryou2.jpg" 
+          alt="賞について" 
+          fill 
+          className="object-cover"
+          priority
+        /> 
+        
+        {/* 👈 3. 画像の上に被さっていたダミー表示（🏆マークのdiv）を完全に消去しました */}
       </div>
+
     </section>
   );
 }

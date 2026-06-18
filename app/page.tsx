@@ -3,9 +3,9 @@ import Hero from "./components/Hero";
 import SanFesSection from "./components/Main";
 import AkadanSection from "./components/react";
 import ArticleSection from "./components/ArticleSection";
-import Footer from "./components/Footer";
 import GoogleMap from "./components/GoogleMap";
 import ScrollReveal from "./components/ScrollReveal"; // 💡 インポートを追加
+import Footer from "./3fes/components/Footer";
 
 export default function Home() {
   return (
@@ -31,10 +31,25 @@ export default function Home() {
       {/* 💡 地図セクションは「上から（ふわっと浮き上がる）」 */}
       <ScrollReveal direction="up">
         {/* Figma再現の地図セクション */}
-        <div style={{ maxWidth: '1000px', margin: '60px auto', padding: '0 20px' }}>
+        <div
+          style={{ maxWidth: "1000px", margin: "60px auto", padding: "0 20px" }}
+        >
           {/* ... (中身は今のまま) ... */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '40px' }}>
-            <div style={{ borderRadius: '4px', overflow: 'hidden', border: '1px solid #e0e0e0', aspectRatio: '4 / 3' }}>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+              gap: "40px",
+            }}
+          >
+            <div
+              style={{
+                borderRadius: "4px",
+                overflow: "hidden",
+                border: "1px solid #e0e0e0",
+                aspectRatio: "4 / 3",
+              }}
+            >
               <GoogleMap />
             </div>
             {/* 住所リスト... */}
