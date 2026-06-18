@@ -1,7 +1,11 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link"; // 1. Linkをインポート
 
 export default function FinaleSongSection() {
+  // 💡 ここに移動させたいYouTubeの動画URLを設定してください
+  const youtubeUrl = "https://www.youtube.com/watch?v=YOUR_VIDEO_ID";
+
   return (
     <section className="w-full max-w-[1442px] mx-auto px-8 py-16 md:px-24 flex flex-col md:flex-row items-center justify-between gap-8 relative bg-[#F7F7F7] overflow-hidden">
       {/* 背景の水彩画風グラデーションあしらい（Figmaの背景の再現） */}
@@ -30,17 +34,29 @@ export default function FinaleSongSection() {
 
         {/* ボタングループ */}
         <div className="flex flex-wrap gap-4 pt-2">
-          <button className="bg-black text-white px-8 py-3 rounded-md font-medium text-sm hover:bg-gray-800 transition-colors shadow-sm">
+          {/* 2. 「曲はこちら」をbuttonからLinkタグに変更 */}
+          <Link 
+            href={youtubeUrl}
+            target="_blank" // 💡 別タブで開く設定
+            rel="noopener noreferrer" // 💡 セキュリティ対策
+            className="inline-flex items-center justify-center bg-black text-white px-8 py-3 rounded-md font-medium text-sm hover:bg-gray-800 transition-colors shadow-sm"
+          >
             曲はこちら
-          </button>
+          </Link>
+          
           <button className="bg-[#E5E7EB] text-gray-800 px-6 py-3 rounded-md font-medium text-sm hover:bg-gray-300 transition-colors shadow-sm">
             セカンダリボタン
           </button>
         </div>
       </div>
 
-      {/* 右側：画像エリア（Little Glee Monsterの写真用グラフィック） */}
-      <div className="w-full md:w-[45%] relative aspect-video md:aspect-[4/3] rounded-2xl overflow-hidden shadow-md bg-white border border-gray-100 z-10">
+      {/* 右側：画像エリア（画像クリックでもYouTubeに飛べるようにLink化） */}
+      <Link 
+        href={youtubeUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-full md:w-[45%] relative aspect-video md:aspect-[4/3] rounded-2xl overflow-hidden shadow-md bg-white border border-gray-100 z-10 block transition-transform duration-300 hover:scale-[1.01] cursor-pointer"
+      >
         <Image
           src="/img/sannfessiryou3.jpg"
           alt="Little Glee Monster"
@@ -48,7 +64,7 @@ export default function FinaleSongSection() {
           className="object-cover"
           priority
         />
-      </div>
+      </Link>
     </section>
   );
 }

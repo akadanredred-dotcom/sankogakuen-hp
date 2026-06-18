@@ -1,22 +1,35 @@
-'use client';
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
 
-export default function Competition() {
+export default function CompetitionDetail() {
   return (
-    <section style={{ fontFamily: 'sans-serif', padding: '20px 0' }}>
-      <div style={{ borderLeft: '4px solid #e50012', paddingLeft: '16px', marginBottom: '24px' }}>
-        <h2 style={{ fontSize: '24px', fontWeight: '800', margin: '0', color: '#ffffff' }}>COMPETITION</h2>
-        <p style={{ fontSize: '12px', color: '#a3a3a3', margin: '4px 0 0 0' }}>競技について</p>
-      </div>
+    <section className="flex flex-col items-center justify-center bg-transparent py-12 px-4 font-sans">
       
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '20px' }}>
-        <div style={{ backgroundColor: '#262626', padding: '20px', borderRadius: '8px' }}>
-          <h3 style={{ fontSize: '16px', fontWeight: '700', color: '#e50012', margin: '0 0 10px 0' }}>団体競技：大綱引き</h3>
-          <p style={{ fontSize: '14px', color: '#d4d4d4', lineHeight: '1.6', margin: '0' }}>全員の呼吸を完全に合わせ、一瞬の隙も与えず力で圧倒する、赤団のパワーを見せつける競技です。</p>
+      {/* 1. 画像だけのクリックエリア（黄色い帯を削除） */}
+      <Link 
+        href="/https://www.youtube.com/watch?v=pLeshxZIlII"
+        className="relative block w-full max-w-2xl overflow-hidden rounded-3xl bg-white shadow-sm transition-all duration-300 hover:shadow-md hover:scale-[1.01] cursor-pointer"
+      >
+        <div className="relative aspect-[16/9] w-full bg-gray-100">
+          <Image
+            src="/img/sannfessiryou8.png" 
+            alt="競技イメージ"
+            fill
+            priority
+            className="object-cover"
+          />
         </div>
-        <div style={{ backgroundColor: '#262626', padding: '20px', borderRadius: '8px' }}>
-          <h3 style={{ fontSize: '16px', fontWeight: '700', color: '#e50012', margin: '0 0 10px 0' }}>団結リレー</h3>
-          <p style={{ fontSize: '14px', color: '#d4d4d4', lineHeight: '1.6', margin: '0' }}>バトンに想いを乗せてトラックを駆け抜けます。選ばれし俊足たちが魅せる最高のドラマです。</p>
-        </div>
+      </Link>
+
+      {/* 2. 導線ボタンエリア */}
+      <div className="mt-6 text-center">
+        <h4 className="text-sm font-bold text-gray-700 mb-2">
+          競技詳細はこちら
+        </h4>
+        <button className="rounded-full bg-sky-100 border border-sky-200 px-6 py-2 text-xs font-semibold text-sky-600 shadow-sm transition-all hover:bg-sky-200 focus:outline-none">
+          セカンドリボタン
+        </button>
       </div>
     </section>
   );
