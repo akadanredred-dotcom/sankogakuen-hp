@@ -41,20 +41,13 @@ export default function FinaleSongSection() {
 
       {/* 右側：画像エリア（Little Glee Monsterの写真用グラフィック） */}
       <div className="w-full md:w-[45%] relative aspect-video md:aspect-[4/3] rounded-2xl overflow-hidden shadow-md bg-white border border-gray-100 z-10">
-        {/* 実際の画像（Figmaのリトグリ写真）を使う場合はここを解除してください */}
         <Image
-          src="/images/sannfessiryou3.jpg"
+          src="/img/sannfessiryou3.jpg"
           alt="Little Glee Monster"
           fill
           className="object-cover"
           priority
         />
-
-        {/* プレースホルダー表示用（背景グラデーション） */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-purple-100 to-pink-100 flex flex-col items-center justify-center text-center p-6 space-y-2">
-          <span className="text-4xl">🎵</span>
-          <p className="text-xs text-gray-400 font-semibold tracking-wider"></p>
-        </div>
       </div>
     </section>
   );
