@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function CompetitionDetail() {
   return (
-    <section className="flex flex-col items-center justify-center py-12 px-4 font-sans">
+    <section className="flex flex-col items-center justify-center py-12 px-4 font-sans gap-6">
       
       <Link 
         href="/sport"
@@ -19,6 +19,13 @@ export default function CompetitionDetail() {
             className="object-cover"
           />
         </div>
+      </Link>
+
+      <Link
+        href="/sport"
+        className="bg-black text-white px-10 py-3 rounded-md font-medium text-sm hover:bg-gray-800 transition-colors shadow-sm"
+      >
+        詳細はこちら
       </Link>
     </section>
   );

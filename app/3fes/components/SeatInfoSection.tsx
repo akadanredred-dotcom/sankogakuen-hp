@@ -1,10 +1,9 @@
-import React from 'react';
-import Image from 'next/image';
+import React from "react";
+import Image from "next/image";
 
 export default function SeatInfoSection() {
   return (
     <section className="w-full max-w-[1442px] mx-auto px-8 py-16 md:px-24 flex flex-col md:flex-row-reverse items-center justify-between gap-8 relative bg-white/50 overflow-hidden">
-      
       <div className="absolute inset-0 pointer-events-none opacity-40">
         <div className="absolute top-[-10%] right-[-5%] w-[400px] h-[400px] bg-blue-100/30 rounded-full blur-3xl"></div>
         <div className="absolute bottom-[-10%] left-[-5%] w-[350px] h-[350px] bg-purple-100/20 rounded-full blur-3xl"></div>
@@ -25,15 +24,13 @@ export default function SeatInfoSection() {
 
         <div className="pl-4 space-y-3 text-sm md:text-base text-gray-600 leading-relaxed">
           <p>
-            当日のトラック周辺の座席配置は以下の通りです。<br />
-            赤団の応援席は、本部テントから向かって【左側】のエリアとなります。
+            当日の座席配置は以下の通りです。
+            <br />
+            赤団の応援席は、渋谷口の南エリアになります。
+            <br />
           </p>
-          <ul className="list-disc list-inside space-y-1 text-gray-500 text-sm">
-            <li>登校後、速やかに指定の座席へ移動してください。</li>
-            <li>一般観覧席での三脚エリアには限りがあります。</li>
-          </ul>
         </div>
-        
+
         <div className="flex flex-wrap gap-4 pl-4 pt-2">
           <button className="bg-black text-white px-8 py-3 rounded-md font-medium text-sm hover:bg-gray-800 transition-colors shadow-sm">
             拡大マップを見る
@@ -45,13 +42,13 @@ export default function SeatInfoSection() {
       </div>
 
       <div className="w-full md:w-[45%] relative aspect-video md:aspect-[4/3] rounded-2xl overflow-hidden shadow-md bg-white/60 border border-gray-100 flex items-center justify-center z-10">
-        <Image 
-          src="/img/sannfessiryou5.jpg" 
-          alt="座席配置図" 
-          fill 
+        <Image
+          src="/img/sannfessiryou4.png"
+          alt="座席配置図"
+          fill
           className="object-cover"
           priority
-        /> 
+        />
       </div>
     </section>
   );

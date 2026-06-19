@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function FinaleSongSection() {
-  const youtubeUrl = "https://www.youtube.com/watch?v=YOUR_VIDEO_ID";
+  const youtubeUrl = "https://www.youtube.com/watch?v=pLeshxZIlII";
 
   return (
     <section className="w-full max-w-[1442px] mx-auto px-8 py-16 md:px-24 flex flex-col md:flex-row items-center justify-between gap-8 relative bg-white/50 overflow-hidden">
@@ -44,7 +44,7 @@ export default function FinaleSongSection() {
       </div>
 
       <Link 
-        href="https://www.youtube.com/watch?v=pLeshxZIlII"
+        href={youtubeUrl}
         target="_blank"
         rel="noopener noreferrer"
         className="w-full md:w-[45%] relative aspect-video md:aspect-[4/3] rounded-2xl overflow-hidden shadow-md bg-white/60 border border-gray-100 z-10 block transition-transform duration-300 hover:scale-[1.01] cursor-pointer"
