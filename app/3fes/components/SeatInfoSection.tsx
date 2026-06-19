@@ -30,12 +30,6 @@ export default function SeatInfoSection() {
             <br />
           </p>
         </div>
-
-        <div className="flex flex-wrap gap-4 pl-4 pt-2">
-          <button className="bg-black text-white px-8 py-3 rounded-md font-medium text-sm hover:bg-gray-800 transition-colors shadow-sm">
-            拡大マップを見る
-          </button>
-        </div>
       </div>
 
       <div className="w-full md:w-[45%] relative aspect-video md:aspect-[4/3] rounded-2xl overflow-hidden shadow-md bg-white/60 border border-gray-100 flex items-center justify-center z-10">

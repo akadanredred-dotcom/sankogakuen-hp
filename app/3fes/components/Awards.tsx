@@ -25,7 +25,7 @@ export default function AwardSection() {
 
         <div className="flex flex-wrap gap-4 pl-4">
           <Link
-            href="/Awards/Awards"
+            href="/awards"
             className="bg-black text-white px-6 py-3 rounded-md font-medium text-sm hover:bg-gray-800 transition-colors shadow-sm"
           >
             詳しくはこちら
