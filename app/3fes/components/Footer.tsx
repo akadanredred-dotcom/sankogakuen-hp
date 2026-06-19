@@ -188,7 +188,7 @@ export default function Footer() {
           }}
         >
           <Link
-            href="/http://localhost:3000/http:/localhost:3000"
+            href="/"
             style={{
               color: "#606060",
               textDecoration: "none",
