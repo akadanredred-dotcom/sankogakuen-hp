@@ -1,4 +1,3 @@
-
 import React from "react";
 
 interface MemberProps {
@@ -45,32 +44,27 @@ export default function ShopMembers() {
     {
       name: "井田 星南",
       role: "副団長",
-      imageUrl:
-         "/img/jikosyoukaisiryou5.jpg",
+      imageUrl: "/img/jikosyoukaisiryou5.jpg",
     },
     {
       name: "泉 哲平",
       role: "副団長",
-      imageUrl:
-        "/img/jikosyoukaisiryou.jpg",
+      imageUrl: "/img/jikosyoukaisiryou.jpg",
     },
     {
       name: "新井 真季",
       role: "副団長",
-      imageUrl:
-        "/img/jikosyoukaisiryou3.jpg",
+      imageUrl: "/img/jikosyoukaisiryou3.jpg",
     },
     {
       name: "渥美 美月",
       role: "副団長",
-      imageUrl:
-        "/img/jikosyoukaisiryou2.jpg",
+      imageUrl: "/img/jikosyoukaisiryou2.jpg",
     },
     {
       name: "高山 桃悠",
       role: "副団長",
-      imageUrl:
-        "/img/jikosyoukaisiryou4.jpg",
+      imageUrl: "/img/jikosyoukaisiryou4.jpg",
     },
   ];
 
@@ -141,11 +135,9 @@ export default function ShopMembers() {
             📅 日付
           </h4>
           <p className="text-gray-500 text-xs leading-relaxed">
-            自由に入力できる本文テキスト。要点や引用、ちょっとしたエピソード、短いストーリーなども加えてください。
-           2026年9月14日(月)会場設営、リハーサル
-           <br />
-           2026年9月15日(火)首都圏三幸フェスティバル本番
-
+            2026年9月14日(月)会場設営、リハーサル
+            <br />
+            2026年9月15日(火)首都圏三幸フェスティバル本番
           </p>
         </div>
       </div>
