@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Footer from "../../../components/Footer";
+import Footer from "../../3fes/components/Footer";
 
 interface MemberInfo {
   name: string;
@@ -122,11 +122,16 @@ export default async function MemberPage({ params }: PageProps) {
     <div className="min-h-screen bg-white text-gray-900 font-sans selection:bg-red-200">
       {/* --- HEADER --- */}
       <header className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center bg-white border-b border-gray-200">
+        {/* 左上ロゴ部分：テキストから画像に変更 */}
         <Link
           href="/"
-          className="font-black text-2xl tracking-wider text-red-600 hover:opacity-80 transition-opacity"
+          className="hover:opacity-80 transition-opacity flex items-center"
         >
-          赤団HP
+          <img
+            src="/img/logo.jpg"
+            alt="赤団ロゴ"
+            className="h-8 w-auto object-contain"
+          />
         </Link>
         <nav className="flex items-center space-x-8 text-sm font-bold text-gray-700">
           <Link href="/" className="hover:text-red-600 transition-colors">
