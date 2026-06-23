@@ -1,13 +1,15 @@
-"use client"; // 💡 パス判定を行うため、先頭に追加します
+"use client"; // 💡 クライアントコンポーネントとして指定
 
 import Link from "next/link";
-import { usePathname } from "next/navigation"; // 💡 追加
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
-  const pathname = usePathname(); // 💡 現在のURLパスを取得
-  
-  // 💡 パスが「/members」から始まる場合（メンバー詳細ページ）を判定
-  const isMemberPage = pathname?.startsWith("/members");
+  const pathname = usePathname();
+
+  // 💡 メンバーページ、またはお問い合わせページ（大文字・小文字どちらも考慮）かどうかを判定
+  const isColoredPage =
+    pathname?.startsWith("/members") || 
+    pathname?.toLowerCase().startsWith("/information");
 
   const navLinks = [
     { title: "トップページへ", path: "/" },
@@ -17,22 +19,28 @@ export default function Navbar() {
   ];
 
   return (
-    <nav 
-      /* 💡 isMemberPage のときだけ背景色（bg-red-700/95）と影（shadow-md）を適用 */
-      className={`absolute left-0 top-0 z-50 flex w-full items-center justify-between px-6 py-4 md:px-10 lg:px-16 transition-colors duration-300 ${
-        isMemberPage ? "bg-red-700/95 shadow-md" : "bg-transparent"
+    <nav
+      /* 💡 ページ背景と同化しないよう、対象ページでは「真っ白な背景（bg-white）」とシャドウを適用 */
+      className={`absolute left-0 top-0 z-50 flex w-full items-center justify-between px-6 py-4 md:px-10 lg:px-16 transition-all duration-300 ${
+        isColoredPage 
+          ? "bg-white shadow-sm border-b border-gray-100 text-gray-900" 
+          : "bg-transparent text-white"
       }`}
     >
-      {/* Logo Section (Top-Left) - ロゴと文字を横並びに変更 */}
-      <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-        {/* ロゴ画像：丸型(rounded-full)を維持しつつ、高さを少し調整 */}
+      {/* Logo Section (Top-Left) */}
+      <Link
+        href="/"
+        className="flex items-center gap-3 hover:opacity-80 transition-opacity"
+      >
         <img
           src="/img/logo.jpg"
           alt="Logo"
           className="h-10 w-10 rounded-full object-cover"
         />
-        {/* ロゴの横に付ける文字テキスト */}
-        <span className="text-xl font-black tracking-wider text-white lg:text-2xl">
+        {/* 💡 ページのタイプに合わせて、テキストの色を白と黒(gray-900)で自動切替 */}
+        <span className={`text-xl font-black tracking-wider lg:text-2xl transition-colors duration-300 ${
+          isColoredPage ? "text-gray-900" : "text-white"
+        }`}>
           赤団HP
         </span>
       </Link>
@@ -44,7 +52,12 @@ export default function Navbar() {
             <Link
               key={index}
               href={link.path}
-              className="text-base font-semibold text-white hover:text-gray-200"
+              /* 💡 リンクの文字色も、背景に合わせて自動切替 */
+              className={`text-base font-semibold transition-colors duration-300 ${
+                isColoredPage 
+                  ? "text-gray-600 hover:text-red-600" 
+                  : "text-white hover:text-gray-200"
+              }`}
             >
               {link.title}
             </Link>
@@ -52,9 +65,16 @@ export default function Navbar() {
         </div>
 
         {/* Contact CTA Button */}
-        <button className="rounded-full border border-gray-400 bg-white px-5 py-2 text-sm font-semibold text-gray-900 transition hover:bg-gray-200 md:text-base">
-          お問い合わせ
-        </button>
+        <Link href="/Information">
+          {/* 💡 ナビが白背景の時は、ボタンを赤くして目立たせる（通常時は白ボタン） */}
+          <button className={`rounded-full border px-5 py-2 text-sm font-semibold transition md:text-base ${
+            isColoredPage
+              ? "border-red-600 bg-red-600 text-white hover:bg-red-700 shadow-sm"
+              : "border-gray-400 bg-white text-gray-900 hover:bg-gray-200"
+          }`}>
+            お問い合わせ
+          </button>
+        </Link>
       </div>
     </nav>
   );

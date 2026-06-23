@@ -110,13 +110,12 @@ export default function Footer() {
         </div>
 
         {/* =================【真ん中ブロック】================= */}
-        {/* お知らせ・グッズ・お問い合わせを中央で【縦並び】に配置 */}
         <div
           style={{
             display: "flex",
-            flexDirection: "column" /* 💡 row から column に変更して縦並びに */,
-            gap: "12px" /* 💡 縦の隙間をちょうどいい幅に調整 */,
-            alignItems: "center" /* 💡 中央揃えに配置 */,
+            flexDirection: "column",
+            gap: "12px",
+            alignItems: "center",
             fontSize: "13px",
           }}
         >
@@ -162,8 +161,10 @@ export default function Footer() {
           >
             グッズ購入
           </Link>
+          
+          {/* 💡 href を /contact から /information に変更しました */}
           <Link
-            href="/contact"
+            href="./Information"
             style={{
               color: "#606060",
               textDecoration: "none",
