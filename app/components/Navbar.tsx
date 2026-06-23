@@ -3,6 +3,7 @@ import Link from "next/link";
 
 export default function Navbar() {
   const navLinks = [
+    { title: "トップページへ", path: "/" },
     { title: "三フェス", path: "/3fes" },
     { title: "賞状", path: "/awards" },
     { title: "競技", path: "/sport" },

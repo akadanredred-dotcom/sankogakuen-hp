@@ -15,21 +15,21 @@ const awardsList: AwardItem[] = [
         id: 1,
         title: "絆賞",
         description:
-            "ひとりじゃ届かない夢も、仲間となら。心を結び、想いをつなぐことで築いた強い絆を称む鍵となる。",
+            "テーマを体現していた団・団応援を表彰",
         imgUrl: "/img/akadannsiryou8.png",
     },
     {
         id: 2,
-        title: "協力賞",
+        title: "パフォーマンス賞",
         description:
-            "全員がひとつの目標に向かって力を合わせ、素晴らしいチームワークを発揮した団に贈られます。",
+            "ビジュアル（衣装・表情）、エンターテイメント、テクニック、構成、一体感の5項目を総合的に評価する",
         imgUrl: "/img/akadannsiryou8.png",
     },
     {
         id: 3,
-        title: "情熱賞",
+        title: "演舞賞",
         description:
-            "誰よりも熱く、会場全体を沸かせるほどの圧倒的なエネルギーとパッションを見せてくれた団に贈られます。",
+            "構成、 一体感、 完成度、 迫力・力強さを総合的に評価する",
         imgUrl: "/img/akadannsiryou8.png",
     },
 ];
