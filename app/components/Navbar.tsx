@@ -67,7 +67,7 @@ export default function Navbar() {
                 </div>
 
                 {/* Contact CTA Button */}
-                <Link href="/information">
+                <Link href="/Information">
                     {/* 💡 ナビが白背景の時は、ボタンを赤くして目立たせる（通常時は白ボタン） */}
                     <button
                         className={`rounded-full border px-5 py-2 text-sm font-semibold transition md:text-base ${
