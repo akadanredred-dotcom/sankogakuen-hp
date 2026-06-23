@@ -66,6 +66,21 @@ export default function ShopMembers() {
       role: "副団長",
       imageUrl: "/img/jikosyoukaisiryou4.jpg",
     },
+    {
+      name: "井之上 準星",
+      role: "演武リーダー",
+      imageUrl: "/img/jikosyoukaisiryou6.jpg", // ✅ 文字列のパスだけ渡す
+    },
+    {
+      name: "相川 心那",
+      role: "パフォーマンスリーダー",
+      imageUrl: "/img/jikosyoukaisiryou6.jpg", // ✅ 文字列のパスだけ渡す
+    },
+    {
+      name: "真庭 春果",
+      role: "パフォーマンスリーダー",
+      imageUrl: "/img/jikosyoukaisiryou6.jpg", // ✅ 文字列のパスだけ渡す
+    },
   ];
 
   return (
