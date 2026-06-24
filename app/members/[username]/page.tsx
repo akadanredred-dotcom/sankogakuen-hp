@@ -1,5 +1,8 @@
+"use client";
+
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { useState, use } from "react";
 import Footer from "../../3fes/components/Footer";
 import Navbar from "@/app/components/Navbar";
 
@@ -99,7 +102,6 @@ const membersData: Record<string, MemberInfo> = {
         imageUrl:
             "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&h=800&fit=crop",
     },
-
     haruka: {
         name: "真庭 春果",
         role: "パフォーマンスリーダー",
@@ -116,10 +118,13 @@ interface PageProps {
     params: Promise<{ username: string }>;
 }
 
-export default async function MemberPage({ params }: PageProps) {
-    const { username } = await params;
-    const memberKey = username.toLowerCase();
+export default function MemberPage({ params }: PageProps) {
+    // Unpack dynamic route params inside a client component safely
+    const resolvedParams = use(params);
+    const memberKey = resolvedParams.username.toLowerCase();
     const member = membersData[memberKey];
+
+    const [isExpanded, setIsExpanded] = useState(false);
 
     if (!member) {
         notFound();
@@ -132,23 +137,29 @@ export default async function MemberPage({ params }: PageProps) {
         }),
     );
 
+    // On mobile screens, display only the first 4 members if collapsed
+    const visibleMobileMembers = isExpanded
+        ? automatedSidebarList
+        : automatedSidebarList.slice(0, 4);
+
     return (
-        /* 💡 pt-20 md:pt-24 を追加して Navbar(absolute) との重なりを完璧に解消！ */
         <div className="min-h-screen bg-gradient-to-b from-red-100/40 via-rose-50 to-white text-gray-900 font-sans selection:bg-red-200 pt-20 md:pt-24">
             {/* --- HEADER --- */}
             <Navbar />
 
             {/* --- MAIN PAGE CONTENT --- */}
-            <div className="max-w-6xl mx-auto px-6 py-12">
-                <div className="flex flex-col md:flex-row gap-8">
-                    {/* 左側：サイドバーナビゲーション */}
+            <div className="max-w-6xl mx-auto px-4 py-6 md:px-6 md:py-12">
+                <div className="flex flex-col md:flex-row gap-6 md:gap-8">
+                    {/* Responsive Aside Block (Grid on Mobile | Stacked list on Desktop) */}
                     <aside className="w-full md:w-52 flex-shrink-0 bg-white/90 backdrop-blur-sm p-4 rounded-2xl border border-red-100 shadow-sm h-fit">
-                        <div className="border-l-4 border-red-600 pl-3 mb-4">
-                            <h2 className="text-gray-900 font-black text-sm tracking-wider">
+                        <div className="border-l-4 border-red-600 pl-3 mb-3">
+                            <h2 className="text-gray-900 font-black text-xs md:text-sm tracking-wider">
                                 メンバー一覧
                             </h2>
                         </div>
-                        <ul className="space-y-1 text-xs font-bold text-gray-600">
+
+                        {/* Desktop uses full listing, mobile maps onto the filter array container */}
+                        <ul className="hidden md:flex flex-col space-y-1 text-xs font-bold text-gray-600">
                             {automatedSidebarList.map((m, idx) => {
                                 const isActive = m.slug === memberKey;
                                 return (
@@ -167,24 +178,58 @@ export default async function MemberPage({ params }: PageProps) {
                                 );
                             })}
                         </ul>
+
+                        {/* Mobile view only: Clean clean grid list */}
+                        <ul className="grid grid-cols-2 gap-2 text-xs font-bold text-gray-600 md:hidden">
+                            {visibleMobileMembers.map((m, idx) => {
+                                const isActive = m.slug === memberKey;
+                                return (
+                                    <li key={idx}>
+                                        <Link
+                                            href={`/members/${m.slug}`}
+                                            className={`block py-2 px-2 rounded-lg transition-all tracking-wide text-center ${
+                                                isActive
+                                                    ? "bg-red-600 text-white font-black shadow-md"
+                                                    : "bg-red-50/50"
+                                            }`}
+                                        >
+                                            {m.name}
+                                        </Link>
+                                    </li>
+                                );
+                            })}
+                        </ul>
+
+                        {/* Expand Button for mobile grid layout */}
+                        {automatedSidebarList.length > 4 && (
+                            <button
+                                onClick={() => setIsExpanded(!isExpanded)}
+                                type="button"
+                                className="mt-3 w-full border border-dashed border-red-300 text-red-600 rounded-lg py-1.5 text-[11px] font-black hover:bg-red-50 transition-colors block md:hidden"
+                            >
+                                {isExpanded
+                                    ? "閉じる ▲"
+                                    : `すべてのメンバーを表示 (+${automatedSidebarList.length - 4}) ▼`}
+                            </button>
+                        )}
                     </aside>
 
                     {/* 右側：プロフィールメインコンテンツ */}
-                    <main className="flex-1 bg-white/95 p-6 md:p-8 rounded-2xl border border-red-50 shadow-sm space-y-6">
+                    <main className="flex-1 bg-white/95 p-5 md:p-8 rounded-2xl border border-red-50 shadow-sm space-y-6">
                         {/* メンバータイトルヘッダー */}
-                        <div className="border-b border-gray-100 pb-4">
+                        <div className="border-b border-gray-100 pb-4 text-center md:text-left">
                             <div className="text-[10px] font-black text-white uppercase tracking-widest bg-red-600 inline-block px-2 py-0.5 rounded mb-2">
                                 赤団 {member.role}
                             </div>
-                            <h1 className="text-gray-900 text-3xl font-black tracking-tight block">
+                            <h1 className="text-gray-900 text-2xl md:text-3xl font-black tracking-tight block">
                                 {member.name}
                             </h1>
                         </div>
 
-                        {/* 詳細コンテンツエリア：2カラム（左: 写真、右: プロフィール） */}
-                        <div className="grid grid-cols-1 md:grid-cols-[4.5fr_5.5fr] gap-8 items-start">
-                            {/* 写真エリア（しっかり綺麗な縦長3:4比率） */}
-                            <div className="w-full relative rounded-xl shadow-md overflow-hidden bg-gray-50 border border-gray-100 aspect-[3/4]">
+                        {/* 詳細コンテンツエリア */}
+                        <div className="grid grid-cols-1 md:grid-cols-[4.5fr_5.5fr] gap-6 md:gap-8 items-start">
+                            {/* 写真エリア */}
+                            <div className="w-full max-w-sm mx-auto md:max-w-none relative rounded-xl shadow-md overflow-hidden bg-gray-50 border border-gray-100 aspect-[3/4]">
                                 <img
                                     src={member.imageUrl}
                                     alt={member.name}
@@ -194,7 +239,7 @@ export default async function MemberPage({ params }: PageProps) {
 
                             {/* 学校・趣味、意気込みエリア */}
                             <div className="space-y-5">
-                                <div className="space-y-4 text-xs leading-relaxed text-gray-700 font-bold bg-rose-50/50 p-5 rounded-xl border border-red-100/40">
+                                <div className="space-y-4 text-xs leading-relaxed text-gray-700 font-bold bg-rose-50/50 p-4 md:p-5 rounded-xl border border-red-100/40">
                                     <div>
                                         <span className="text-red-600 block text-[10px] uppercase tracking-wider mb-1">
                                             【学校】
@@ -214,17 +259,14 @@ export default async function MemberPage({ params }: PageProps) {
                                 </div>
 
                                 {/* 意気込みエリア */}
-                                <div className="bg-gradient-to-br from-red-50 via-rose-50/30 to-white p-5 rounded-xl border border-red-200/60 shadow-sm relative overflow-hidden">
-                                    <div className="absolute top-0 right-0 transform translate-x-2 -translate-y-2 text-red-200/30 font-black text-5xl select-none opacity-40 pointer-events-none">
-                                        “
-                                    </div>
-                                    <span className="block text-xs text-red-600 font-black mb-1.5 flex items-center gap-1">
+                                <div className="bg-gradient-to-br from-red-50 via-rose-50/30 to-white p-4 md:p-5 rounded-xl border border-red-200/60 shadow-sm relative overflow-hidden">
+                                    <span className="block text-xs text-red-600 font-black mb-1.5 flex items-center justify-center md:justify-start gap-1">
                                         🔥{" "}
                                         <span className="tracking-wider">
                                             三フェスへの意気込み
                                         </span>
                                     </span>
-                                    <p className="text-left font-black text-gray-900 text-sm md:text-base leading-snug tracking-normal whitespace-pre-line">
+                                    <p className="text-center md:text-left font-black text-gray-900 text-sm md:text-base leading-snug whitespace-pre-line">
                                         {member.resolution}
                                     </p>
                                 </div>
