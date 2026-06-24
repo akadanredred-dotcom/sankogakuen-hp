@@ -10,7 +10,7 @@ import Footer from "./3fes/components/Footer";
 
 // 💡 サイトのタイトル、説明文、ファビコンの設定
 export const metadata: Metadata = {
-    title: "サイトのタイトル | 3fes",
+    title: "赤団HP",
     description:
         "ここにサイトの説明文（ディスクリプション）を入力します。検索結果に表示される大切な文章です。",
     icons: {
