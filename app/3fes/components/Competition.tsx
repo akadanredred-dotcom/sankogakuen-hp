@@ -11,7 +11,7 @@ export default function CompetitionDetail() {
       >
         <div className="relative aspect-[16/9] w-full">
           <Image
-            src="/img/7games poster_0.png"
+            src="/img/7games poster_0.jpg"
             alt="競技イメージ"
             fill
             priority
