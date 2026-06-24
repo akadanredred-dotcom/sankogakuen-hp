@@ -104,22 +104,7 @@ export default function ShopMembers() {
       className="scroll-mt-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12"
     >
       {/* 三か条・ヘッダーエリア */}
-      <div className="text-center max-w-xl mx-auto mb-12">
-        <h2 className="text-2xl md:text-3xl font-extrabold text-red-600 tracking-widest border-b-2 border-red-600 pb-2 mb-4 inline-block">
-          三か条
-        </h2>
-        <p className="text-gray-600 text-xs md:text-sm leading-relaxed mb-6">
-          このセクションのサブ見出しは、長くても短くても構いません。
-        </p>
-        <div className="flex justify-center space-x-4">
-          <button className="bg-red-600 hover:bg-red-700 text-white font-bold text-xs px-6 py-2.5 rounded shadow transition-colors">
-            ボタン
-          </button>
-          <button className="bg-white hover:bg-gray-50 text-gray-700 border border-gray-300 font-bold text-xs px-6 py-2.5 rounded shadow-sm transition-colors">
-            セカンダリボタン
-          </button>
-        </div>
-      </div>
+
 
       {/* メンバーグリッド */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">

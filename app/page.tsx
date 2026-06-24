@@ -7,6 +7,7 @@ import ArticleSection from "./components/ArticleSection";
 import GoogleMap from "./components/GoogleMap";
 import ScrollReveal from "./components/ScrollReveal";
 import Footer from "./3fes/components/Footer";
+import Memories from "./components/Memories";
 
 // 💡 サイトのタイトル、説明文、ファビコンの設定
 export const metadata: Metadata = {
@@ -38,7 +39,9 @@ export default function Home() {
       <ScrollReveal direction="left">
         <AkadanSection />
       </ScrollReveal>
-
+            <ScrollReveal direction="left">
+        <Memories />
+      </ScrollReveal>
       {/* 💡 ArticleSectionは「左から」 */}
       <ScrollReveal direction="left">
         <ArticleSection />
