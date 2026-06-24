@@ -93,7 +93,7 @@ export default function ShopMembers() {
     {
       name: "真庭 春果",
       role: "パフォーマンスリーダー",
-      imageUrl: "/img/jikosyoukaisiryou6.jpg",
+      imageUrl: "/img/jikosyoukaisiryou9.jpg",
       slug: "haruka",
     },
   ];
