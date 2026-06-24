@@ -1,11 +1,24 @@
+import { Metadata } from "next"; // 💡 メタデータ用の型をインポート
 import Image from "next/image";
 import Hero from "./components/Hero";
 import SanFesSection from "./components/Main";
 import AkadanSection from "./components/react";
 import ArticleSection from "./components/ArticleSection";
 import GoogleMap from "./components/GoogleMap";
-import ScrollReveal from "./components/ScrollReveal"; // 💡 インポートを追加
+import ScrollReveal from "./components/ScrollReveal";
 import Footer from "./3fes/components/Footer";
+
+// 💡 サイトのタイトル、説明文、ファビコンの設定
+export const metadata: Metadata = {
+    title: "サイトのタイトル | 3fes",
+    description:
+        "ここにサイトの説明文（ディスクリプション）を入力します。検索結果に表示される大切な文章です。",
+    icons: {
+        icon: "/assets/favicon.ico", // public/favicon.ico を参照します
+        // スマホのホーム画面用（必要に応じて public/ に配置してください）
+        apple: "/assets/apple-touch-icon.png",
+    },
+};
 
 export default function Home() {
     return (
@@ -41,7 +54,6 @@ export default function Home() {
                         padding: "0 20px",
                     }}
                 >
-                    {/* ... (中身は今のまま) ... */}
                     <div
                         style={{
                             display: "grid",
@@ -60,12 +72,16 @@ export default function Home() {
                         >
                             <GoogleMap />
                         </div>
-                        {/* 住所リスト... */}
+
+                        {/* 住所リスト（省略されていた箇所をそのまま配置できるように残しています） */}
+                        <div>
+                            {/* ここに住所やアクセスのテキストが入ります */}
+                        </div>
                     </div>
                 </div>
             </ScrollReveal>
 
-            {/* フッターは先ほどアニメーションを直に入れたのでそのままでOK */}
+            {/* フッター */}
             <Footer />
         </div>
     );
