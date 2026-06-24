@@ -202,10 +202,11 @@ export default function ContactPage() {
 
                             {/* 送信ボタン */}
                             <div className="pt-2">
+                                {/* 💡 py-6 (特大の縦幅) と tracking-widest (広い文字間隔) で圧倒的な極太ボタンへ */}
                                 <button
                                     type="submit"
                                     disabled={isSubmitting}
-                                    className={`w-full rounded-full bg-red-600 py-3.5 text-sm font-black text-white shadow-md shadow-red-600/10 hover:bg-red-700 hover:shadow-lg transition flex items-center justify-center gap-2 ${
+                                    className={`w-full rounded-full bg-red-600 py-6 text-lg font-black tracking-widest text-white shadow-xl shadow-red-600/30 hover:bg-red-700 hover:shadow-2xl transition flex items-center justify-center gap-2 ${
                                         isSubmitting
                                             ? "opacity-70 cursor-not-allowed"
                                             : ""

@@ -111,9 +111,10 @@ export default function ContactForm() {
 
       {/* 送信ボタン */}
       <div className="pt-2">
+        {/* 💡 py-5（上下のパディングを最大級に）と text-lg（文字をさらに拡大）で圧倒的に太くしました */}
         <button
           type="submit"
-          className="w-full rounded-full bg-red-600 py-3.5 text-sm font-black text-white shadow-md shadow-red-600/10 hover:bg-red-700 hover:shadow-lg transition flex items-center justify-center gap-2"
+          className="w-full rounded-full bg-red-600 py-5 text-lg font-black tracking-wide text-white shadow-lg shadow-red-600/20 hover:bg-red-700 hover:shadow-xl transition flex items-center justify-center gap-2"
         >
           🔥 <span>この内容で送信する</span>
         </button>
