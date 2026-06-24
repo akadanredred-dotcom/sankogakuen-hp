@@ -17,7 +17,7 @@ export default function SanFesSection() {
             <div className="relative z-10 w-[90%] max-w-[1000px]  px-8 py-12 md:px-16 md:py-4 text-center">
                 {/* タイトル */}
                 <h2 className="text-[#FA2D66] text-4xl md:text-5xl font-black tracking-widest mb-6">
-                    ミフェス
+                    三フェス
                 </h2>
 
                 {/* 説明文 */}
