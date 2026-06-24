@@ -35,7 +35,7 @@ export default function Home() {
             </ScrollReveal>
 
             {/* 💡 AkadanSectionは「右から」 */}
-            <ScrollReveal direction="right">
+            <ScrollReveal direction="left">
                 <AkadanSection />
             </ScrollReveal>
 
