@@ -109,11 +109,10 @@ export default function AMain() {
           {rightColumnItems.map((comp) => renderCard(comp))}
         </div>
       </div>
-
-      <div className="max-w-5xl mx-auto mt-24 mb-12 text-center overflow-hidden py-4">
-        <div className="inline-block text-4xl md:text-6xl font-black text-amber-500 tracking-wider select-none transform -rotate-[5deg] drop-shadow-sm">
+      <div className="max-w-5xl mx-auto mt-16 mb-8 text-center px-4">
+        <h2 className="text-2xl md:text-4xl font-bold text-slate-800 tracking-normal">
           一緒に頑張りましょう
-        </div>
+        </h2>
       </div>
 
       {/* --- MODAL MARKUP --- */}
