@@ -110,9 +110,9 @@ export default function AMain() {
         </div>
       </div>
       <div className="max-w-5xl mx-auto mt-16 mb-8 text-center px-4">
-        <h2 className="text-2xl md:text-4xl font-bold text-slate-800 tracking-normal">
+        <div className="inline-block text-2xl md:text-4xl font-bold text-black tracking-wider select-none">
           一緒に頑張りましょう
-        </h2>
+        </div>
       </div>
 
       {/* --- MODAL MARKUP --- */}
