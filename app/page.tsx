@@ -27,7 +27,7 @@ export default function Home() {
       {/* ヒーローは最初から見えているのでアニメーションなし */}
       <Hero
         backgroundImage={"/img/hero-bg.png"}
-        mobileBackgroundImage="/img/hero2-bg.jpg"
+        mobileBackgroundImage="/img/baoisgay.jpg"
       />
 
       {/* 💡 SanFesSectionは「左から」 */}
