@@ -53,11 +53,7 @@ export default function Hero({
         <h1 className="text-7xl font-extrabold tracking-tight text-red-600 sm:text-8xl md:text-9xl lg:text-[140px]">
           赤団
         </h1>
-
         {/* White Subtitle (Pop against the new dark filter!) */}
-        <p className="mt-6 max-w-3xl text-xl font-semibold text-white sm:text-2xl md:text-3xl">
-          株式会社赤団
-        </p>
       </div>
     </section>
   );
