@@ -47,8 +47,13 @@ export default function Hero({
         <div className="-translate-y-5 md:-translate-y-7">
           {/* モバイル用 */}
           <h1
-            className={`${yujiSyuku.className} text-7xl font-extrabold tracking-tight text-red-600 sm:text-8xl md:text-9xl lg:text-[140px] block md:hidden`}
-            style={{ paddingBottom: "50px", paddingLeft: "7px" }}
+            className={`${yujiSyuku.className} text-8xl font-extrabold tracking-tight text-red-600 sm:text-9xl block md:hidden`}
+            style={{
+              paddingBottom: "50px",
+              paddingLeft: "7px",
+              display: "flex",
+              alignItems: "flex-end",
+            }}
           >
             豹牙
           </h1>
