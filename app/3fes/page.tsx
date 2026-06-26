@@ -53,8 +53,9 @@ export default function Home() {
             <GoogleMap />
           </ScrollReveal>
         </div>
-        <Competition />
-        <Footer />
+        <Countdown />
+        
+        {/* <Footer /> */}
       </div>
     </main>
   );
