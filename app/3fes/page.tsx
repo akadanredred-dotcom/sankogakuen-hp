@@ -7,6 +7,7 @@ import Awards from "./components/Awards";
 import GoogleMap from "./components/GoogleMap";
 import Footer from "./components/Footer";
 import ScrollReveal from "./components/ScrollReveal";
+import Navbar from "../components/Navbar";
 import FinaleSongSection from "./components/FinaleSongSection";
 import SeatInfoSection from "./components/SeatInfoSection";
 import Countdown from "../components/Countdown";
@@ -29,6 +30,7 @@ export default function Home() {
       {/* メインビジュアル */}
       <div className="relative z-10">
         <Hero />
+        <Navbar />
 
         {/* コンテンツエリア */}
         <div className="max-w-4xl mx-auto px-4 py-12 space-y-24">
@@ -47,14 +49,11 @@ export default function Home() {
           <ScrollReveal direction="left">
             <SeatInfoSection />
           </ScrollReveal>
-          <ScrollReveal direction="left">
-            <Countdown />
-          </ScrollReveal>
           <ScrollReveal direction="up">
             <GoogleMap />
           </ScrollReveal>
         </div>
-
+        <Competition />
         <Footer />
       </div>
     </main>
