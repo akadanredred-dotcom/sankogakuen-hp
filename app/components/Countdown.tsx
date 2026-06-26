@@ -41,40 +41,38 @@ export default function Countdown() {
         return () => clearInterval(timer);
     }, []);
 
-    // Prevent hydration mismatch by showing a loading state until mounted
+    // Return nothing until the client has mounted to prevent hydration errors.
     if (!timeLeft) {
-        return (
-            <div className="flex items-center justify-center min-h-[200px]">
-                <div className="animate-pulse text-xl text-slate-400 font-medium">
-                    読み込み中...
-                </div>
-            </div>
-        );
+        return null;
     }
 
     const timeBlocks = [
         { label: "日", value: timeLeft.days },
-        { label: "時間", value: timeLeft.hours },
+        { label: "時", value: timeLeft.hours },
         { label: "分", value: timeLeft.minutes },
         { label: "秒", value: timeLeft.seconds },
     ];
 
     return (
-        <div className="flex flex-col items-center justify-center p-8 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 rounded-3xl shadow-2xl border border-slate-800 max-w-2xl mx-auto backdrop-blur-md">
-            <h2 className="text-sm uppercase tracking-widest text-indigo-400 font-semibold mb-6">
-                目標日時：9月15日 10:00 (JST)
-            </h2>
+        <div className="fixed bottom-4 right-4 z-50 flex flex-col items-center p-4 bg-white/95 border border-slate-200 rounded-2xl shadow-xl backdrop-blur-sm max-w-[280px] sm:max-w-xs animate-fade-in-up">
+            <div className="text-[10px] uppercase tracking-wider text-slate-600 font-bold mb-2.5 flex items-center gap-1.5">
+                <span className="flex h-2 w-2 relative">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
+                </span>
+                本番まであと
+            </div>
 
-            <div className="grid grid-cols-4 gap-4 sm:gap-6 w-full">
+            <div className="grid grid-cols-4 gap-1.5 w-full">
                 {timeBlocks.map((block, index) => (
                     <div
                         key={index}
-                        className="flex flex-col items-center justify-center bg-slate-900/50 border border-slate-700/50 rounded-2xl p-4 sm:p-6 shadow-inner transform transition-all duration-500 hover:scale-105"
+                        className="flex flex-col items-center justify-center bg-slate-50 border border-slate-100 rounded-lg py-1 px-2 min-w-[50px] shadow-inner"
                     >
-                        <span className="text-3xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-300 font-mono tracking-tight tabular-nums">
+                        <span className="text-xl sm:text-2xl font-black text-red-600 font-mono tracking-tight tabular-nums">
                             {String(block.value).padStart(2, "0")}
                         </span>
-                        <span className="text-xs sm:text-sm font-medium text-indigo-300 mt-2">
+                        <span className="text-[9px] font-bold text-slate-500 mt-0.5">
                             {block.label}
                         </span>
                     </div>
@@ -85,8 +83,8 @@ export default function Countdown() {
                 timeLeft.hours === 0 &&
                 timeLeft.minutes === 0 &&
                 timeLeft.seconds === 0 && (
-                    <div className="mt-8 text-xl font-bold text-emerald-400 animate-bounce">
-                        時間になりました！
+                    <div className="mt-2 text-xs font-bold text-emerald-600 text-center">
+                        本番当日です！
                     </div>
                 )}
         </div>
