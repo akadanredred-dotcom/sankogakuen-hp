@@ -5,6 +5,7 @@ import Hero from "./Components/Hero";
 import Main from "./Components/Main";
 import Navbar from "../components/Navbar";
 import Footer from "../3fes/components/Footer";
+import Countdown from "../components/Countdown";
 
 export default function CompetitionsListPage() {
   return (
@@ -13,6 +14,7 @@ export default function CompetitionsListPage() {
       <div className="mt-8" />
       <Navbar />
       <Main />
+      <Countdown />
       <Footer />
     </main>
   );
