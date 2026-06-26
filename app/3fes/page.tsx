@@ -53,7 +53,6 @@ export default function Home() {
             <GoogleMap />
           </ScrollReveal>
         </div>
-
       </div>
       <Countdown />
       <Footer />
