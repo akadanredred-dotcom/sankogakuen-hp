@@ -1,6 +1,12 @@
-// components/Hero.tsx
 import Image from "next/image";
 import Navbar from "./Navbar";
+import { Yuji_Syuku } from "next/font/google";
+
+const yujiSyuku = Yuji_Syuku({
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+});
 
 interface HeroProps {
   backgroundImage: string;
@@ -13,12 +19,8 @@ export default function Hero({
 }: HeroProps) {
   return (
     <section className="relative flex h-screen w-full flex-col overflow-hidden bg-white">
-      {/* The Navigation Bar (Top-layer content) */}
       <Navbar />
-
-      {/* Background Image Container */}
       <div className="absolute inset-0 z-0">
-        {/* Desktop Background Image (Hidden on mobile, visible on md screens and up) */}
         <div className="hidden md:block absolute inset-0">
           <Image
             src={backgroundImage}
@@ -29,8 +31,6 @@ export default function Hero({
             sizes="100vw"
           />
         </div>
-
-        {/* Mobile Background Image (Visible on mobile, hidden on md screens and up) */}
         <div className="block md:hidden absolute inset-0">
           <Image
             src={mobileBackgroundImage}
@@ -41,19 +41,17 @@ export default function Hero({
             sizes="100vw"
           />
         </div>
-
-        {/* Dark Overlay Filter for Readability */}
-        {/* The 'opacity-30' sets a 30% black filter over the image */}
         <div className="absolute inset-0 bg-black opacity-30 z-10" />
       </div>
-
-      {/* Centered Text Content (Placed above the overlay) */}
       <div className="relative z-20 flex flex-grow flex-col items-center justify-center px-6 text-center">
-        {/* Large, Red Main Title */}
-        <h1 className="text-7xl font-extrabold tracking-tight text-red-600 sm:text-8xl md:text-9xl lg:text-[140px]">
-          赤団
-        </h1>
-        {/* White Subtitle (Pop against the new dark filter!) */}
+        <div className="-translate-y-5 md:-translate-y-7">
+          <h1
+            className={`${yujiSyuku.className} text-7xl font-extrabold tracking-tight text-red-600 sm:text-8xl md:text-9xl lg:text-[140px]`}
+            style={{ paddingBottom: "150px", paddingLeft: "65px" }}
+          >
+            赤団
+          </h1>
+        </div>
       </div>
     </section>
   );
