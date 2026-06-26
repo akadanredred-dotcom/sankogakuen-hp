@@ -45,8 +45,16 @@ export default function Hero({
       </div>
       <div className="relative z-20 flex flex-grow flex-col items-center justify-center px-6 text-center">
         <div className="-translate-y-5 md:-translate-y-7">
+          {/* モバイル用 */}
           <h1
-            className={`${yujiSyuku.className} text-7xl font-extrabold tracking-tight text-red-600 sm:text-8xl md:text-9xl lg:text-[140px]`}
+            className={`${yujiSyuku.className} text-7xl font-extrabold tracking-tight text-red-600 sm:text-8xl md:text-9xl lg:text-[140px] block md:hidden`}
+            style={{ paddingBottom: "50px", paddingLeft: "7px" }}
+          >
+            赤団
+          </h1>
+          {/* PC用 */}
+          <h1
+            className={`${yujiSyuku.className} text-7xl font-extrabold tracking-tight text-red-600 sm:text-8xl md:text-9xl lg:text-[140px] hidden md:block`}
             style={{ paddingBottom: "150px", paddingLeft: "65px" }}
           >
             赤団
