@@ -20,6 +20,8 @@ export default function Hero({
   return (
     <section className="relative flex h-screen w-full flex-col overflow-hidden bg-white">
       <Navbar />
+
+      {/* 背景画像コンテナ */}
       <div className="absolute inset-0 z-0">
         <div className="hidden md:block absolute inset-0">
           <Image
@@ -43,25 +45,35 @@ export default function Hero({
         </div>
         <div className="absolute inset-0 bg-black opacity-30 z-10" />
       </div>
+
+      {/* テキストコンテンツ */}
       <div className="relative z-20 flex flex-grow flex-col items-center justify-center px-6 text-center">
         <div className="-translate-y-5 md:-translate-y-7">
-          {/* モバイル用 (block md:hidden でスマホの時だけ表示) */}
+          {/* 
+            【モバイル用】
+            styleの display: flex などを削除し、Tailwindの「flex items-end」クラスに置き換えました。
+            これでPC時に hidden が確実に効くようになります。
+          */}
           <h1
-            className={`${yujiSyuku.className} text-8xl font-extrabold tracking-tight text-red-600 sm:text-9xl block md:hidden`}
+            className={`${yujiSyuku.className} text-8xl font-extrabold tracking-tight text-red-600 sm:text-9xl flex items-end md:hidden`}
             style={{
               paddingBottom: "50px",
               paddingLeft: "7px",
-              display: "flex",
-              alignItems: "flex-end",
             }}
           >
             豹牙
           </h1>
 
-          {/* PC用 (hidden md:block でタブレット・PCの時だけ表示) */}
+          {/* 
+            【PC用】
+            こちらもクラスだけで制御できるように整理しています。
+          */}
           <h1
             className={`${yujiSyuku.className} text-7xl font-extrabold tracking-tight text-red-600 sm:text-8xl md:text-9xl lg:text-[140px] hidden md:block`}
-            style={{ paddingBottom: "150px", paddingLeft: "65px" }}
+            style={{
+              paddingBottom: "150px",
+              paddingLeft: "65px",
+            }}
           >
             豹牙
           </h1>
