@@ -45,7 +45,7 @@ export default function Hero({
       </div>
       <div className="relative z-20 flex flex-grow flex-col items-center justify-center px-6 text-center">
         <div className="-translate-y-5 md:-translate-y-7">
-          {/* モバイル用 */}
+          {/* モバイル用 (block md:hidden でスマホの時だけ表示) */}
           <h1
             className={`${yujiSyuku.className} text-8xl font-extrabold tracking-tight text-red-600 sm:text-9xl block md:hidden`}
             style={{
@@ -57,7 +57,8 @@ export default function Hero({
           >
             豹牙
           </h1>
-          {/* PC用 */}
+
+          {/* PC用 (hidden md:block でタブレット・PCの時だけ表示) */}
           <h1
             className={`${yujiSyuku.className} text-7xl font-extrabold tracking-tight text-red-600 sm:text-8xl md:text-9xl lg:text-[140px] hidden md:block`}
             style={{ paddingBottom: "150px", paddingLeft: "65px" }}
