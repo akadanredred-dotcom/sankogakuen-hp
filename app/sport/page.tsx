@@ -4,8 +4,8 @@ import React from "react";
 import Hero from "./Components/Hero";
 import Main from "./Components/Main";
 import Navbar from "../components/Navbar";
-import Footer from "../3fes/components/Footer";
 import Countdown from "../components/Countdown";
+import Footer from "../3fes/components/Footer";
 
 export default function CompetitionsListPage() {
   return (
