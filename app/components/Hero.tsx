@@ -49,13 +49,13 @@ export default function Hero({
       {/* テキストコンテンツ */}
       <div className="relative z-20 flex flex-grow flex-col items-center justify-center px-6 text-center">
         <div className="-translate-y-5 md:-translate-y-7">
-          {/* 
-            【モバイル用】
-            styleの display: flex などを削除し、Tailwindの「flex items-end」クラスに置き換えました。
-            これでPC時に hidden が確実に効くようになります。
+          
+          {/* 【モバイル用】 
+              PC（md以上）では hidden で確実に消えるよう、flex ではなく block に統一しました。
+              位置調整は style の padding で調整しています。
           */}
           <h1
-            className={`${yujiSyuku.className} text-8xl font-extrabold tracking-tight text-red-600 sm:text-9xl flex items-end md:hidden`}
+            className={`${yujiSyuku.className} text-8xl font-extrabold tracking-tight text-red-600 sm:text-9xl block md:hidden`}
             style={{
               paddingBottom: "50px",
               paddingLeft: "7px",
@@ -64,9 +64,8 @@ export default function Hero({
             豹牙
           </h1>
 
-          {/* 
-            【PC用】
-            こちらもクラスだけで制御できるように整理しています。
+          {/* 【PC用】
+              普段は非表示（hidden）で、PC（md以上）のときだけ block で表示させます。
           */}
           <h1
             className={`${yujiSyuku.className} text-7xl font-extrabold tracking-tight text-red-600 sm:text-8xl md:text-9xl lg:text-[140px] hidden md:block`}
@@ -77,6 +76,7 @@ export default function Hero({
           >
             豹牙
           </h1>
+
         </div>
       </div>
     </section>
