@@ -49,25 +49,16 @@ export default function Hero({
       {/* テキストコンテンツ */}
       <div className="relative z-20 flex flex-grow flex-col items-center justify-center px-6 text-center">
         <div className="-translate-y-5 md:-translate-y-7">
-          {/* 
-            【モバイル用】
-            styleを完全に廃止しました。
-            「pb-[50px] pl-[7px]」で余白を、
-            「flex items-end md:hidden」でスマホ時のみ下揃えで表示させ、PCでは確実に非表示にします。
-          */}
+          {/* モバイル用 */}
           <h1
             className={`${yujiSyuku.className} text-8xl font-extrabold tracking-tight text-red-600 sm:text-9xl flex items-end pb-[50px] pl-[7px] md:hidden`}
           >
             豹牙
           </h1>
 
-          {/* 
-            【PC用】
-            こちらもstyleを廃止し、「md:pb-[150px] md:pl-[65px]」でPC用の余白を設定しています。
-            「hidden md:block」によって、スマホ時は確実に非表示になります。
-          */}
+          {/* PC用 */}
           <h1
-            className={`${yujiSyuku.className} text-7xl font-extrabold tracking-tight text-red-600 sm:text-8xl md:text-9xl lg:text-[140px] hidden md:block md:pb-[150px] md:pl-[65px]`}
+            className={`${yujiSyuku.className} text-7xl font-extrabold tracking-tight text-red-600 sm:text-8xl md:text-9xl lg:text-[140px] md:pb-[150px] md:pl-[65px] hidden md:flex md:items-end`}
           >
             豹牙
           </h1>
