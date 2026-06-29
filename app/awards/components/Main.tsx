@@ -30,7 +30,7 @@ const awardsList: AwardItem[] = [
         title: "演舞賞",
         description:
             "構成、 一体感、 完成度、 迫力・力強さを総合的に評価する",
-        imgUrl: "/img/akadannsiryou8.png",
+        imgUrl: "/img/awards.png",
     },
 ];
 
