@@ -151,7 +151,7 @@ export default function AMain() {
                 {selectedCompetition.number} {selectedCompetition.title}
               </div>
               <h3 className="text-xl font-bold mb-2 text-gray-800">
-                {selectedCompetition.title} の詳細情報
+                {selectedCompetition.title} のルール
               </h3>
               <p className="text-gray-600 leading-relaxed text-sm">
                 {selectedCompetition.description ||
