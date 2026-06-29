@@ -2,8 +2,6 @@
 
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
-import Link from "next/link";
-// 1. ここでNavbarコンポーネントをインポートします（パスはご自身の環境に合わせて調整してください）
 import Navbar from "../components/Navbar";
 import Countdown from "../components/Countdown";
 
@@ -66,10 +64,8 @@ export default function MemoriesPage() {
 
   return (
     <div className="min-h-screen bg-[#f9f8f6] text-[#333] font-sans antialiased">
-      {/* 2. 最上部にNavbarを配置します */}
       <Navbar />
 
-      {/* Hero Area */}
       <header className="relative h-[40vh] w-full bg-gradient-to-r from-red-500 to-pink-500 flex flex-col justify-center items-center text-center px-4 text-white">
         <h1 className="text-3xl md:text-5xl font-extrabold tracking-wider m-0 mb-3 drop-shadow-md">
           2025 思い出
@@ -79,13 +75,12 @@ export default function MemoriesPage() {
         </p>
       </header>
 
-      {/* Main Content */}
       <main className="max-w-[1200px] mx-auto p-5 pb-20">
         {photos.length === 0 && !loading && initialLoaded && (
           <p className="text-center text-gray-400 py-20">画像がありません...</p>
         )}
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 auto-rows-[10px]">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
           {photos.map((url, index) => (
             <PhotoItem key={url + index} url={url} index={index} />
           ))}
@@ -103,37 +98,20 @@ export default function MemoriesPage() {
         </div>
       </main>
 
-      {/* Footer */}
       <Countdown footerId="page-footer" />
     </div>
   );
 }
 
 function PhotoItem({ url, index }: { url: string; index: number }) {
-  const [rowSpan, setRowSpan] = useState("row-span-[22]");
-
   return (
-    <div
-      className={`relative rounded-xl overflow-hidden shadow-sm hover:scale-[1.02] transition-transform bg-gray-200 w-full h-full ${rowSpan}`}
-    >
+    <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-sm hover:scale-[1.02] transition-transform bg-gray-200 w-full">
       <Image
         src={url}
         alt={`思い出の写真 ${index + 1}`}
         fill
         className="object-cover"
         sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
-        onLoad={(e) => {
-          const img = e.target as HTMLImageElement;
-          const ratio = img.naturalHeight / img.naturalWidth;
-
-          if (ratio > 1.2) {
-            setRowSpan("row-span-[28]");
-          } else if (ratio < 0.8) {
-            setRowSpan("row-span-[16]");
-          } else {
-            setRowSpan("row-span-[22]");
-          }
-        }}
       />
     </div>
   );
