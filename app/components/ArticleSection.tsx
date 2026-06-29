@@ -18,7 +18,7 @@ function MemberCard({ name, role, imageUrl, slug }: MemberProps) {
           <img
             src={imageUrl}
             alt={`${name}の顔写真`}
-            className="w-full h-full object-cover object-center grayscale group-hover:grayscale-0 transition-all duration-300"
+            className="w-full h-full object-cover object-center transition-all duration-300 md:grayscale md:group-hover:grayscale-0"
           />
           {/* 左上の「赤団」斜めラベル */}
           <div className="absolute top-0 left-0 bg-red-600 text-white text-[10px] font-bold px-3 py-1 uppercase tracking-wider transform -rotate-12 -translate-x-1 translate-y-1 shadow">
