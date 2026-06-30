@@ -1,70 +1,112 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-interface CountdownProps {
-  footerId?: string; // 💡 削らずにしっかり受け取ります
+const TARGET_DATE = new Date("2026-09-15T11:40:00+09:00").getTime();
+
+interface TimeLeft {
+    days: number;
+    hours: number;
+    minutes: number;
+    seconds: number;
 }
 
-export default function Countdown({ footerId }: CountdownProps) {
-  const [timeLeft, setTimeLeft] = useState('');
-  const [isFixed, setIsFixed] = useState(true);
+export default function Countdown({ footerId }: { footerId: string }) {
+    const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null);
+    const [isDocked, setIsDocked] = useState(false);
 
-  useEffect(() => {
-    // 1. カウントダウンタイマーの処理
-    const targetDate = new Date('2026-09-15T00:00:00').getTime();
-    const interval = setInterval(() => {
-      const now = new Date().getTime();
-      const difference = targetDate - now;
+    useEffect(() => {
+        const calculateTimeLeft = () => {
+            const now = new Date().getTime();
+            const difference = TARGET_DATE - now;
 
-      if (difference <= 0) {
-        setTimeLeft('本番当日です！');
-        clearInterval(interval);
-        return;
-      }
+            if (difference <= 0) {
+                setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+                return;
+            }
 
-      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+            setTimeLeft({
+                days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+                hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+                minutes: Math.floor((difference / 1000 / 60) % 60),
+                seconds: Math.floor((difference / 1000) % 60),
+            });
+        };
 
-      setTimeLeft(`本番まであと ${days}日 ${hours}時間 ${minutes}分 ${seconds}秒`);
-    }, 1000);
+        calculateTimeLeft();
+        const timer = setInterval(calculateTimeLeft, 1000);
 
-    // 2. フッターを検知してついてくる（位置を固定する）処理
-    const handleScroll = () => {
-      if (!footerId) return;
-      const footer = document.getElementById(footerId);
-      if (!footer) return;
+        // Track when the footer enters the viewport window
+        const footerElement = document.getElementById(footerId);
+        let observer: IntersectionObserver;
 
-      const footerTop = footer.getBoundingClientRect().top;
-      const windowHeight = window.innerHeight;
+        if (footerElement) {
+            observer = new IntersectionObserver(
+                ([entry]) => {
+                    setIsDocked(entry.isIntersecting);
+                },
+                { rootMargin: "0px 0px 0px 0px" },
+            );
+            observer.observe(footerElement);
+        }
 
-      // フッターが画面内に入ってきたら固定を解除してその場に止める
-      if (footerTop <= windowHeight) {
-        setIsFixed(false);
-      } else {
-        setIsFixed(true);
-      }
-    };
+        return () => {
+            clearInterval(timer);
+            if (observer && footerElement) observer.unobserve(footerElement);
+        };
+    }, [footerId]);
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // 初期チェック
+    if (!timeLeft) return null;
 
-    return () => {
-      clearInterval(interval);
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [footerId]);
+    const timeBlocks = [
+        { label: "日", value: timeLeft.days },
+        { label: "時", value: timeLeft.hours },
+        { label: "分", value: timeLeft.minutes },
+        { label: "秒", value: timeLeft.seconds },
+    ];
 
-  // 💡 isFixed の状態によって、画面下についてくる(fixed)か、フッター手前で止まる(absolute)かを切り替えます
-  return (
-    <div
-      className={`w-full text-center py-4 bg-red-600 text-white font-bold text-lg shadow-inner z-50 transition-all ${
-        isFixed ? 'fixed bottom-0 left-0' : 'absolute bottom-0 left-0'
-      }`}
-    >
-      {timeLeft || '読み込み中...'}
-    </div>
-  );
+    return (
+        <div
+            className={`z-50 flex flex-col items-center p-4 bg-white/95 border border-slate-200 rounded-2xl shadow-xl backdrop-blur-sm w-[260px] sm:w-[280px]
+        ${
+            isDocked
+                ? "absolute bottom-4 right-4" // Locks safely right at the bottom edge of the content section
+                : "fixed bottom-4 right-4" // Scrolls along fixed to the browser screen
+        }
+      `}
+        >
+            <div className="text-[10px] uppercase tracking-wider text-slate-600 font-bold mb-2.5 flex items-center gap-1.5 w-full justify-start">
+                <span className="flex h-2 w-2 relative">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
+                </span>
+                本番まであと
+            </div>
+
+            <div className="grid grid-cols-4 gap-1.5 w-full">
+                {timeBlocks.map((block, index) => (
+                    <div
+                        key={index}
+                        className="flex flex-col items-center justify-center bg-slate-50 border border-slate-100 rounded-lg py-1 px-1 shadow-inner"
+                    >
+                        <span className="text-lg sm:text-xl font-black text-red-600 font-mono tracking-tight tabular-nums">
+                            {String(block.value).padStart(2, "0")}
+                        </span>
+                        <span className="text-[9px] font-bold text-slate-500 mt-0.5">
+                            {block.label}
+                        </span>
+                    </div>
+                ))}
+            </div>
+
+            {timeLeft.days === 0 &&
+                timeLeft.hours === 0 &&
+                timeLeft.minutes === 0 &&
+                timeLeft.seconds === 0 && (
+                    <div className="mt-2 text-xs font-bold text-emerald-600 text-center">
+                        本番当日です！
+                    </div>
+                )}
+        </div>
+    );
 }

@@ -1,30 +1,45 @@
-import { Metadata } from "next";
-import Footer from "../3fes/components/Footer"; // パスは環境に合わせて調整してください
-import Countdown from "../components/Countdown"; // パスは環境に合わせて調整してください
+"use client";
 
-export const metadata: Metadata = {
-    title: "アワード | 豹牙HP",
-    description: "表彰式の詳細ページです！",
-};
+import React from "react";
+import AwardsHero from "./components/Hero";
+import AwardsMain from "./components/Main";
+import Navbar from "../components/Navbar";
+import Countdown from "./components/Countdown";
+import Footer from "../3fes/components/Footer";
 
 export default function AwardsPage() {
-    return (
-        <div className="min-h-screen bg-white text-slate-900 flex flex-col">
-            <main className="relative flex-1 w-full p-5">
-                <div className="max-w-[1000px] mx-auto my-[60px]">
-                    <h1 className="text-3xl font-bold mb-5 text-[#333]">アワード（表彰式）</h1>
-                    <p className="leading-[1.8] mb-5">
-                        これまでの努力が結実する瞬間。仲間と共に勝ち取った栄光を称え合います。
-                    </p>
-                </div>
+  return (
+    /* 
+          【調整ポイント】
+          - relative を追加：Countdown が最下部でピタッと止まるための基準点（親）になります。
+          - bg-[#F7F7F7] などの元のスタイルはそのまま維持しています。
+        */
+    <main className="relative w-full min-h-screen bg-[#F7F7F7] font-sans pb-24">
+      {/* 
+              ヘッダー部分 
+              ※もし AwardsHero の中にもすでに <Navbar /> が入っている場合は、
+              二重表示を防ぐためにここの <Navbar /> は削除するかコメントアウトしてください。
+            */}
+      <Navbar />
 
-                {/* 💡 削らず、型エラーが出ない正しい書き方に修正しました */}
-                <Countdown />
-            </main>
+      <AwardsHero />
 
-            <div id="main-footer">
-                <Footer />
-            </div>
-        </div>
-    );
+      {/* 左右交互の賞紹介コンテンツ部分 */}
+      <AwardsMain />
+
+      {/* 
+              💡 修正ポイント
+              フッター要素を検知できるように、外側を id="main-footer" を持った div で包みます。
+            */}
+      <div id="main-footer">
+        <Footer />
+      </div>
+
+      {/* 
+              💡 修正ポイント
+              カウントダウンコンポーネントに、上で指定したフッターのIDを渡します。
+            */}
+      <Countdown footerId="main-footer" />
+    </main>
+  );
 }
