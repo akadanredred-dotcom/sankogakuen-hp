@@ -63,7 +63,7 @@ export default function Footer() {
 
           {/* Empty Links removed or cleaned up to keep uniform spacing */}
           <Link
-            href="./information"
+            href="../information"
             className="font-medium text-gray-500 transition-colors hover:text-black hover:underline"
           >
             お問い合わせ
