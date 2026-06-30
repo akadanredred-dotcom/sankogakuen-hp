@@ -26,7 +26,7 @@ export default function AkadanPage() {
           <p
             className="absolute text-red-900 font-bold"
             style={{
-              top: "15.5%",
+              top: "11.5%",
               left: "50%",
               transform: "translateX(-50%)",
               fontSize: "clamp(16px, 1.5vw, 26px)",
@@ -44,7 +44,7 @@ export default function AkadanPage() {
           <h1
             className="absolute text-[#8a1010] font-black"
             style={{
-              top: "34%",
+              top: "29%",
               left: "50%",
               transform: "translateX(-50%)",
               fontSize: "clamp(34px, 3.6vw, 58px)",
@@ -63,7 +63,7 @@ export default function AkadanPage() {
           <p
             className="absolute text-[#3b2a1a] font-extrabold"
             style={{
-              top: "48.5%",
+              top: "43.5%",
               left: "50%",
               transform: "translateX(-50%)",
               fontSize: "clamp(20px, 2.1vw, 34px)",
@@ -80,7 +80,7 @@ export default function AkadanPage() {
           <div
             className="absolute bg-[#8a1010]/70"
             style={{
-              top: "55.5%",
+              top: "50.5%",
               left: "50%",
               transform: "translateX(-50%)",
               width: "5%",
@@ -92,7 +92,7 @@ export default function AkadanPage() {
           <div
             className="absolute flex flex-col items-center text-center"
             style={{
-              top: "59%",
+              top: "54%",
               left: "10%",
               transform: "translateX(-50%)",
               width: "27%",
@@ -136,7 +136,7 @@ export default function AkadanPage() {
           <div
             className="absolute flex flex-col items-center text-center"
             style={{
-              top: "59%",
+              top: "54%",
               left: "50%",
               transform: "translateX(-50%)",
               width: "27%",
@@ -180,7 +180,7 @@ export default function AkadanPage() {
           <div
             className="absolute flex flex-col items-center text-center"
             style={{
-              top: "59%",
+              top: "54%",
               left: "89.5%",
               transform: "translateX(-50%)",
               width: "27%",
@@ -224,7 +224,7 @@ export default function AkadanPage() {
           <p
             className="absolute font-extrabold text-[#fdf3dc]"
             style={{
-              top: "78%",
+              top: "73%",
               left: "50%",
               transform: "translateX(-50%)",
               fontSize: "clamp(16px, 1.55vw, 25px)",
