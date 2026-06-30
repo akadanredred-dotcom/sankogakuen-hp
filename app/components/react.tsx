@@ -98,25 +98,30 @@ export default function AkadanPage() {
               width: "27%",
             }}
           >
-            <span
-              className="text-[#8a1010] font-black leading-none"
-              style={{
-                fontSize: "clamp(22px, 2.3vw, 38px)",
-                textShadow: "0 2px 4px rgba(0,0,0,0.2)",
-              }}
-            >
-              ①
-            </span>
-            <span
-              className="mt-[6px] text-[#241a10] font-extrabold"
-              style={{
-                fontSize: "clamp(19px, 1.85vw, 30px)",
-                letterSpacing: "0.22em",
-                textIndent: "0.22em",
-              }}
-            >
-              笑顔
-            </span>
+            <div className="flex items-center justify-center gap-[10px]">
+              <span
+                className="flex items-center justify-center rounded-full bg-[#8a1010] text-white font-black border-2 border-white/90"
+                style={{
+                  width: "clamp(28px, 2.6vw, 42px)",
+                  height: "clamp(28px, 2.6vw, 42px)",
+                  fontSize: "clamp(15px, 1.4vw, 22px)",
+                  boxShadow:
+                    "0 2px 5px rgba(0,0,0,0.35), inset 0 1px 1px rgba(255,255,255,0.3)",
+                }}
+              >
+                1
+              </span>
+              <span
+                className="text-[#241a10] font-extrabold"
+                style={{
+                  fontSize: "clamp(19px, 1.85vw, 30px)",
+                  letterSpacing: "0.22em",
+                  textIndent: "0.22em",
+                }}
+              >
+                笑顔
+              </span>
+            </div>
             <p
               className="mt-[10px] text-[#3a2c1d] font-medium leading-[1.85]"
               style={{
@@ -142,25 +147,30 @@ export default function AkadanPage() {
               width: "27%",
             }}
           >
-            <span
-              className="text-[#8a1010] font-black leading-none"
-              style={{
-                fontSize: "clamp(22px, 2.3vw, 38px)",
-                textShadow: "0 2px 4px rgba(0,0,0,0.2)",
-              }}
-            >
-              ②
-            </span>
-            <span
-              className="mt-[6px] text-[#241a10] font-extrabold"
-              style={{
-                fontSize: "clamp(19px, 1.85vw, 30px)",
-                letterSpacing: "0.22em",
-                textIndent: "0.22em",
-              }}
-            >
-              元気
-            </span>
+            <div className="flex items-center justify-center gap-[10px]">
+              <span
+                className="flex items-center justify-center rounded-full bg-[#8a1010] text-white font-black border-2 border-white/90"
+                style={{
+                  width: "clamp(28px, 2.6vw, 42px)",
+                  height: "clamp(28px, 2.6vw, 42px)",
+                  fontSize: "clamp(15px, 1.4vw, 22px)",
+                  boxShadow:
+                    "0 2px 5px rgba(0,0,0,0.35), inset 0 1px 1px rgba(255,255,255,0.3)",
+                }}
+              >
+                2
+              </span>
+              <span
+                className="text-[#241a10] font-extrabold"
+                style={{
+                  fontSize: "clamp(19px, 1.85vw, 30px)",
+                  letterSpacing: "0.22em",
+                  textIndent: "0.22em",
+                }}
+              >
+                元気
+              </span>
+            </div>
             <p
               className="mt-[10px] text-[#3a2c1d] font-medium leading-[1.85]"
               style={{
@@ -186,25 +196,30 @@ export default function AkadanPage() {
               width: "27%",
             }}
           >
-            <span
-              className="text-[#8a1010] font-black leading-none"
-              style={{
-                fontSize: "clamp(22px, 2.3vw, 38px)",
-                textShadow: "0 2px 4px rgba(0,0,0,0.2)",
-              }}
-            >
-              ③
-            </span>
-            <span
-              className="mt-[6px] text-[#241a10] font-extrabold"
-              style={{
-                fontSize: "clamp(19px, 1.85vw, 30px)",
-                letterSpacing: "0.14em",
-                textIndent: "0.14em",
-              }}
-            >
-              メリハリ
-            </span>
+            <div className="flex items-center justify-center gap-[10px]">
+              <span
+                className="flex items-center justify-center rounded-full bg-[#8a1010] text-white font-black border-2 border-white/90"
+                style={{
+                  width: "clamp(28px, 2.6vw, 42px)",
+                  height: "clamp(28px, 2.6vw, 42px)",
+                  fontSize: "clamp(15px, 1.4vw, 22px)",
+                  boxShadow:
+                    "0 2px 5px rgba(0,0,0,0.35), inset 0 1px 1px rgba(255,255,255,0.3)",
+                }}
+              >
+                3
+              </span>
+              <span
+                className="text-[#241a10] font-extrabold"
+                style={{
+                  fontSize: "clamp(19px, 1.85vw, 30px)",
+                  letterSpacing: "0.14em",
+                  textIndent: "0.14em",
+                }}
+              >
+                メリハリ
+              </span>
+            </div>
             <p
               className="mt-[10px] text-[#3a2c1d] font-medium leading-[1.85]"
               style={{
