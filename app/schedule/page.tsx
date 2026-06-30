@@ -16,7 +16,7 @@ import Link from "next/link"; // 💡 ファイルの上のほうで一度だけ
     </h3>
   </div>
   <p className="text-xs text-gray-500 leading-relaxed pl-3">
-    当日のタイムスケジュール（時間割）の詳細はこちらからご確認いただけます。
+     当日のタイムスケジュール（時間割）の詳細はこちらからご確認いただけます。
   </p>
   <div className="mt-4 pl-3 text-xs font-semibold text-red-500 group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
     詳細を見る →
