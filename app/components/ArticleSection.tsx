@@ -137,17 +137,30 @@ export default function ShopMembers() {
 
         {/* 🕰️ 当日スケジュール */}
         <div className="flex flex-col items-center space-y-4">
-          <Link
-            href="/schedule"
-            className="group block w-full hover:opacity-80 transition-opacity no-underline"
-          >
-            <div className="space-y-2 flex flex-col items-center">
-              <h4 className="font-bold text-sm text-gray-900 border-l-4 border-red-600 pl-3 group-hover:underline decoration-red-600 group-hover:text-red-600 transition-colors">
+          <Link href="/schedule" className="group block w-full no-underline">
+            <div className="space-y-3 flex flex-col items-center rounded-xl border border-gray-200 p-4 transition-all hover:border-red-300 hover:shadow-md">
+              <h4 className="font-bold text-sm text-gray-900 border-l-4 border-red-600 pl-3 group-hover:text-red-600 transition-colors">
                 🕰️ 当日スケジュール
               </h4>
-              <p className="text-gray-500 text-xs leading-relaxed no-underline">
+              <p className="text-gray-500 text-xs leading-relaxed text-center no-underline">
                 当日の詳細なタイムスケジュール（時間割）はこちらからご確認いただけます。
               </p>
+              <span className="inline-flex items-center gap-1 rounded-full bg-red-600 px-4 py-1.5 text-xs font-semibold text-white transition-colors group-hover:bg-red-700">
+                スケジュールを見る
+                <svg
+                  className="w-3 h-3 transition-transform group-hover:translate-x-0.5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </span>
             </div>
           </Link>
         </div>
