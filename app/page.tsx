@@ -12,7 +12,7 @@ import Countdown from "./components/Countdown";
 export const metadata: Metadata = {
     title: "豹牙HP",
     description:
-        "笑顔・元気・メリハリを胸に、仲間とともに全力で勝利を目指す団です！",
+        "笑顔・元気・メリハリを胸に, 仲間とともに全力で勝利を目指す団です！",
     icons: {
         icon: "/assets/favicon.ico",
         apple: "/assets/apple-touch-icon.png",
@@ -87,8 +87,8 @@ export default function Home() {
                     </div>
                 </ScrollReveal>
 
-                {/* 💡 footerId を削除しました */}
-                <Countdown />
+                {/* 元通りのカウントダウンの配置 */}
+                <Countdown footerId="page-footer" />
             </div>
 
             <div id="page-footer">
