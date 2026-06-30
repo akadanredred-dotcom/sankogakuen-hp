@@ -125,7 +125,7 @@ export default function Navbar() {
 
             {/* Mobile Drawer Overlay */}
             <div
-                className={`fixed inset-y-0 right-0 z-40 w-4/5 max-w-sm transform bg-white p-8 shadow-2xl transition-transform duration-300 ease-in-out md:hidden ${
+                className={`fixed inset-y-0 right-0 z-100 w-4/5 max-w-sm transform bg-white p-8 shadow-2xl transition-transform duration-300 ease-in-out md:hidden ${
                     isOpen ? "translate-x-0" : "translate-x-full"
                 }`}
             >
