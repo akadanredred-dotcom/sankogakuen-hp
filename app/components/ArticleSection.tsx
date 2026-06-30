@@ -119,13 +119,17 @@ export default function ShopMembers() {
             </div>
 
             {/* 下部のサブ見出しテキストグリッド */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16 border-t border-gray-100 pt-12">
-                <div className="space-y-2">
+            {/* 💡 各要素を中央配置するために text-center を追加 */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16 border-t border-gray-100 pt-12 text-center">
+                
+                {/* 📣 応援 */}
+                {/* 💡 flex flex-col items-center で中身を中央に寄せています */}
+                <div className="space-y-2 flex flex-col items-center">
                     <h4 className="font-bold text-sm text-gray-900 border-l-4 border-red-600 pl-3">
                         📣 応援
                     </h4>
-                    {/* FIX: Changed <p> to <ul> for semantically valid nesting */}
-                    <ul className="text-gray-500 text-xs leading-relaxed list-disc list-inside space-y-1">
+                    {/* 💡 箇条書きのぽっち（・）が不自然に左に寄らないよう、list-none で消すか、あるいは中央に収まるように調整 */}
+                    <ul className="text-gray-500 text-xs leading-relaxed space-y-1 list-none">
                         <li>喧嘩上等</li>
                         <li>盛り上がりが足りない</li>
                         <li>Gフレア</li>
@@ -134,7 +138,9 @@ export default function ShopMembers() {
                         <li>アゲホイ</li>
                     </ul>
                 </div>
-                <div className="space-y-2">
+
+                {/* 📝 サブ見出し */}
+                <div className="space-y-2 flex flex-col items-center">
                     <h4 className="font-bold text-sm text-gray-900 border-l-4 border-red-600 pl-3">
                         📝 サブ見出し
                     </h4>
@@ -142,7 +148,9 @@ export default function ShopMembers() {
                         提案したい内容を自由に書く本文テキスト。
                     </p>
                 </div>
-                <div className="space-y-2">
+
+                {/* 🔒 サブ見出し */}
+                <div className="space-y-2 flex flex-col items-center">
                     <h4 className="font-bold text-sm text-gray-900 border-l-4 border-red-600 pl-3">
                         🔒 サブ見出し
                     </h4>
@@ -150,7 +158,9 @@ export default function ShopMembers() {
                         主導したいことを自由に書く本文テキスト。
                     </p>
                 </div>
-                <div className="space-y-2">
+
+                {/* 📅 日付 */}
+                <div className="space-y-2 flex flex-col items-center">
                     <h4 className="font-bold text-sm text-gray-900 border-l-4 border-red-600 pl-3">
                         📅 日付
                     </h4>
@@ -160,6 +170,7 @@ export default function ShopMembers() {
                         2026年9月15日(火)首都圏三幸フェスティバル本番
                     </p>
                 </div>
+
             </div>
         </section>
     );
