@@ -12,7 +12,7 @@ export default function CompetitionDetail() {
         {/* PC用画像 */}
         <div className="relative aspect-[16/9] w-full hidden md:block">
           <Image
-            src="/img/  .png"
+            src="/img/7games_poster_0.png"
             alt="競技イメージ"
             fill
             priority
