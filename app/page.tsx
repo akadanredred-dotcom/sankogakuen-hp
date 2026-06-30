@@ -22,7 +22,6 @@ export const metadata: Metadata = {
 export default function Home() {
     return (
         <div className="min-h-screen bg-white text-slate-900 flex flex-col">
-            {/* 💡 CRITICAL: This relative wrapper locks the countdown's absolute position */}
             <div className="relative flex-1 w-full">
                 <Hero
                     backgroundImage={"/img/hero-bg.png"}
@@ -88,11 +87,10 @@ export default function Home() {
                     </div>
                 </ScrollReveal>
 
-                {/* 💡 【修正箇所】footerId="page-footer" を削除してシンプルな形にしました */}
+                {/* 💡 footerId を削除しました */}
                 <Countdown />
             </div>
 
-            {/* 💡 Give your footer the ID so the component can track it */}
             <div id="page-footer">
                 <Footer />
             </div>
