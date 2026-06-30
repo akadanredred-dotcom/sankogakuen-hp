@@ -8,7 +8,7 @@ export default function SanFesSection() {
       <div className="absolute inset-0 z-0 select-none pointer-events-none">
         {/* 📱 スマホ用画像 (bg12) : デフォルトはブロック表示、lg(1024px)以上で非表示 */}
         <Image
-          src="/img/bg12.jpeg" // ← 拡張子（.jpegや.jpgなど）は実際のファイルに合わせてください
+          src="/img/bg12.png" // ← 拡張子（.jpegや.jpgなど）は実際のファイルに合わせてください
           alt="三フェス メインビジュアル スマホ版"
           fill
           priority
@@ -17,7 +17,7 @@ export default function SanFesSection() {
 
         {/* 💻 PC用画像 (bg11) : デフォルトは非表示、lg(1024px)以上でブロック表示 */}
         <Image
-          src="/img/bg11.jpeg"
+          src="/img/bg11.png"
           alt="三フェス メインビジュアル PC版"
           fill
           priority
