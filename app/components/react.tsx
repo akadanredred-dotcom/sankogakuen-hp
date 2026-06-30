@@ -6,7 +6,7 @@ export default function AkadanPage() {
     <div className="relative w-full h-screen bg-[#b9b7ae] overflow-hidden font-sans">
       {/* PC版 */}
       <Image
-        src="/img/hyouga.jpg"
+        src="/img/hyouga.png"
         alt="赤団 豹牙"
         fill
         priority
