@@ -5,24 +5,18 @@ import AkadanSection from "./components/react";
 import ArticleSection from "./components/ArticleSection";
 import GoogleMap from "./components/GoogleMap";
 import ScrollReveal from "./components/ScrollReveal";
-import Footer from "./3fes/components/Footer";
+import Footer from "./components/Footer";
 import Memories from "./components/Memories";
-import Countdown from "./components/Countdown";
+import Countdown from "../components/Countdown"; // パスは環境に合わせて調整してください
 
 export const metadata: Metadata = {
-    title: "豹牙HP",
-    description:
-        "笑顔・元気・メリハリを胸に、仲間とともに全力で勝利を目指す団です！",
-    icons: {
-        icon: "/assets/favicon.ico",
-        apple: "/assets/apple-touch-icon.png",
-    },
+    title: "3フェス | 豹牙HP",
+    description: "三幸学園フェスティバルの詳細ページです！",
 };
 
-export default function Home() {
+export default function ThreeFesPage() {
     return (
         <div className="min-h-screen bg-white text-slate-900 flex flex-col">
-            {/* 💡 CRITICAL: This relative wrapper locks the countdown's absolute position */}
             <div className="relative flex-1 w-full">
                 <Hero
                     backgroundImage={"/img/hero-bg.png"}
@@ -64,36 +58,24 @@ export default function Home() {
                                         <li className="mb-2.5">
                                             <strong>日程:</strong>
                                             <span className="block pl-[15px]">
-                                                ・2026年9月14日(月)
-                                                会場設営・リハーサル
+                                                ・2026年9月14日(月) 会場設営・リハーサル
                                             </span>
                                             <span className="block pl-[15px]">
                                                 ・2026年9月15日(火) 本番
                                             </span>
                                         </li>
                                     </ul>
-                                    <div className="mt-5">
-                                        <a
-                                            href="https://maps.google.com/maps?ll=35.670065,139.694966&z=16&t=m&hl=ja&gl=JP&mapclient=embed&cid=3800131593595043646"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="inline-block py-2.5 px-5 bg-[#d32f2f] text-white no-underline rounded font-bold transition-colors hover:bg-[#b71c1c]"
-                                        >
-                                            Googleマップで開く
-                                        </a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </ScrollReveal>
 
-                {/* 💡 The countdown goes inside this container at the very end */}
-                <Countdown footerId="page-footer" />
+                {/* 💡 【修正箇所】footerId を削除してシンプルな形にしました */}
+                <Countdown />
             </div>
 
-            {/* 💡 Give your footer the ID so the component can track it */}
-            <div id="page-footer">
+            <div>
                 <Footer />
             </div>
         </div>
