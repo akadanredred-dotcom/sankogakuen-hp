@@ -105,7 +105,6 @@ export default function ShopMembers() {
     >
       {/* 三か条・ヘッダーエリア */}
 
-
       {/* メンバーグリッド */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
         {members.map((member, index) => (
@@ -123,10 +122,15 @@ export default function ShopMembers() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16 border-t border-gray-100 pt-12">
         <div className="space-y-2">
           <h4 className="font-bold text-sm text-gray-900 border-l-4 border-red-600 pl-3">
-            ⚙️ サブ見出し
+            📣 応援
           </h4>
           <p className="text-gray-500 text-xs leading-relaxed">
-            伝えたいことを自由に書く本文テキスト。
+            <li>喧嘩上等</li>
+            <li>盛り上がりが足りない</li>
+            <li>Gフレア</li>
+            <li>日曜日よりの使者</li>
+            <li>We are reds</li>
+            <li>アゲホイ</li>
           </p>
         </div>
         <div className="space-y-2">
