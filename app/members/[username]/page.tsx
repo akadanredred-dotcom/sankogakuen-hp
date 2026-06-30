@@ -34,7 +34,7 @@ const membersData: Record<string, MemberInfo> = {
         hobbies: "ギターを弾くこと、一発ギャグ",
         resolution:
             "笑いの絶えない最高の団にします！！ 史上最高の三フェスに！！！",
-        imageUrl: "/jikosyoukaisiryou6.jpg",
+        imageUrl: "/img/jikosyoukaisiryou6.jpg",
     },
     arai: {
         name: "新井 真季",
@@ -42,7 +42,7 @@ const membersData: Record<string, MemberInfo> = {
         school: "東京ビューティー＆ブライダル専門学校",
         hobbies: "ネイル、もつ鍋",
         resolution: "みんながキラキラ輝ける サンフェスにします！！",
-        imageUrl: "/jikosyoukaisiryou3.jpg",
+        imageUrl: "/img/jikosyoukaisiryou3.jpg",
     },
     teppei: {
         name: "泉 哲平",
@@ -50,7 +50,7 @@ const membersData: Record<string, MemberInfo> = {
         school: "東京みらいAI&IT専門学校",
         hobbies: "バイト",
         resolution: "優勝絶対！",
-        imageUrl: "/jikosyoukaisiryou.jpg",
+        imageUrl: "/img/jikosyoukaisiryou.jpg",
     },
     ida: {
         name: "井田 星南",
@@ -59,7 +59,7 @@ const membersData: Record<string, MemberInfo> = {
         hobbies: "バスケ、ドライブ",
         resolution:
             "勝ちにこだわって赤団と サンフェスをさいこうに盛り上げます！！",
-        imageUrl: "/jikosyoukaisiryou5.jpg",
+        imageUrl: "/img/jikosyoukaisiryou5.jpg",
     },
     takayama: {
         name: "高山 桃悠",
@@ -68,7 +68,7 @@ const membersData: Record<string, MemberInfo> = {
         hobbies: "スティッチ探し",
         resolution:
             "みんなの笑顔と力を合わせて、最高の赤団を目指します！！",
-        imageUrl: "/jikosyoukaisiryou4.jpg",
+        imageUrl: "/img/jikosyoukaisiryou4.jpg",
     },
     atumi: {
         name: "渥美 美月",
@@ -77,7 +77,7 @@ const membersData: Record<string, MemberInfo> = {
         hobbies: "ライブに行く・マジック",
         resolution:
             "今までにないくらい最高の三フェスにするために最後まで笑顔で団を盛り上げます！！！",
-        imageUrl: "/jikosyoukaisiryou2.jpg",
+        imageUrl: "/img/jikosyoukaisiryou2.jpg",
     },
     jyunsei: {
         name: "井之上 準星",
@@ -85,7 +85,7 @@ const membersData: Record<string, MemberInfo> = {
         school: "東京リゾート＆スポーツ専門学校",
         hobbies: "ライブ・ギター",
         resolution: "誰よりも熱く、誰よりも本気で挑みます。",
-        imageUrl: "/jikosyoukaisiryou7.png",
+        imageUrl: "/img/jikosyoukaisiryou7.png",
     },
     aikawa: {
         name: "相川 心那",
@@ -93,7 +93,7 @@ const membersData: Record<string, MemberInfo> = {
         school: "東京スイーツ＆カフェ専門学校",
         hobbies: "ライブに行くこと、パッションティー",
         resolution: "笑顔あふれる最高の三フェスに！！！！ 絶対優勝！",
-        imageUrl: "/jikosyoukaisiryou8.png",
+        imageUrl: "/img/jikosyoukaisiryou8.png",
     },
     haruka: {
         name: "真庭 春果",
@@ -102,7 +102,7 @@ const membersData: Record<string, MemberInfo> = {
         hobbies: "韓国ドラマ鑑賞",
         resolution:
             "いままで以上に最高なパフォーマンスをして絶対に優勝します！！",
-        imageUrl: "./jikosyoukaisiryou9.jpg",
+        imageUrl: "/img/jikosyoukaisiryou9.jpg",
     },
 };
 interface PageProps {
