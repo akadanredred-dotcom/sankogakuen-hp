@@ -1,13 +1,13 @@
 import { Metadata } from "next";
 import Hero from "./components/Hero";
-import SanFesSection from "./components/Main";
-import AkadanSection from "./components/react";
-import ArticleSection from "./components/ArticleSection";
+import SanFesSection from "../components/Main";
+import AkadanSection from "../components/react";
+import ArticleSection from "../components/ArticleSection";
 import GoogleMap from "./components/GoogleMap";
 import ScrollReveal from "./components/ScrollReveal";
-import Footer from "./components/Footer";
-import Memories from "./components/Memories";
-import Countdown from "../components/Countdown";
+import Footer from "@/app/3fes/components/Footer"; // 💡 パスを修正
+import Memories from "../components/Memories";
+import Countdown from "@/app/components/Countdown"; // 💡 パスを修正
 
 export const metadata: Metadata = {
   title: "3フェス | 豹牙HP",
@@ -70,7 +70,6 @@ export default function ThreeFesPage() {
           </div>
         </ScrollReveal>
 
-        {/* 💡 footerId を削除しました */}
         <Countdown />
       </div>
 
