@@ -34,8 +34,7 @@ const membersData: Record<string, MemberInfo> = {
         hobbies: "ギターを弾くこと、一発ギャグ",
         resolution:
             "笑いの絶えない最高の団にします！！ 史上最高の三フェスに！！！",
-        imageUrl:
-            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop",
+        imageUrl: "/jikosyoukaisiryou6.jpg",
     },
     arai: {
         name: "新井 真季",
@@ -43,8 +42,7 @@ const membersData: Record<string, MemberInfo> = {
         school: "東京ビューティー＆ブライダル専門学校",
         hobbies: "ネイル、もつ鍋",
         resolution: "みんながキラキラ輝ける サンフェスにします！！",
-        imageUrl:
-            "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=800&fit=crop",
+        imageUrl: "/jikosyoukaisiryou3.jpg",
     },
     teppei: {
         name: "泉 哲平",
@@ -52,8 +50,7 @@ const membersData: Record<string, MemberInfo> = {
         school: "東京みらいAI&IT専門学校",
         hobbies: "バイト",
         resolution: "優勝絶対！",
-        imageUrl:
-            "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&h=800&fit=crop",
+        imageUrl: "/jikosyoukaisiryou.jpg",
     },
     ida: {
         name: "井田 星南",
@@ -62,17 +59,16 @@ const membersData: Record<string, MemberInfo> = {
         hobbies: "バスケ、ドライブ",
         resolution:
             "勝ちにこだわって赤団と サンフェスをさいこうに盛り上げます！！",
-        imageUrl:
-            "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&h=800&fit=crop",
+        imageUrl: "/jikosyoukaisiryou5.jpg",
     },
     takayama: {
         name: "高山 桃悠",
         role: "副団長",
         school: "東京リゾート＆スポーツ専門学校",
         hobbies: "スティッチ探し",
-        resolution: "みんなの笑顔と力を合わせて、 最高の赤団を目指します！！",
-        imageUrl:
-            "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&h=800&fit=crop",
+        resolution:
+            "みんなの笑顔と力を合わせて、最高の赤団を目指します！！",
+        imageUrl: "/jikosyoukaisiryou4.jpg",
     },
     atumi: {
         name: "渥美 美月",
@@ -80,9 +76,8 @@ const membersData: Record<string, MemberInfo> = {
         school: "東京立川こども専門学校",
         hobbies: "ライブに行く・マジック",
         resolution:
-            "今までにないくらい最高の 三フェスにするために最後まで 笑顔で団を盛り上げます！！！",
-        imageUrl:
-            "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&h=800&fit=crop",
+            "今までにないくらい最高の三フェスにするために最後まで笑顔で団を盛り上げます！！！",
+        imageUrl: "/jikosyoukaisiryou2.jpg",
     },
     jyunsei: {
         name: "井之上 準星",
@@ -90,8 +85,7 @@ const membersData: Record<string, MemberInfo> = {
         school: "東京リゾート＆スポーツ専門学校",
         hobbies: "ライブ・ギター",
         resolution: "誰よりも熱く、誰よりも本気で挑みます。",
-        imageUrl:
-            "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&h=800&fit=crop",
+        imageUrl: "/jikosyoukaisiryou7.png",
     },
     aikawa: {
         name: "相川 心那",
@@ -99,8 +93,7 @@ const membersData: Record<string, MemberInfo> = {
         school: "東京スイーツ＆カフェ専門学校",
         hobbies: "ライブに行くこと、パッションティー",
         resolution: "笑顔あふれる最高の三フェスに！！！！ 絶対優勝！",
-        imageUrl:
-            "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&h=800&fit=crop",
+        imageUrl: "/jikosyoukaisiryou8.png",
     },
     haruka: {
         name: "真庭 春果",
@@ -109,11 +102,9 @@ const membersData: Record<string, MemberInfo> = {
         hobbies: "韓国ドラマ鑑賞",
         resolution:
             "いままで以上に最高なパフォーマンスをして絶対に優勝します！！",
-        imageUrl:
-            "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&h=800&fit=crop",
+        imageUrl: "./jikosyoukaisiryou9.jpg",
     },
 };
-
 interface PageProps {
     params: Promise<{ username: string }>;
 }
