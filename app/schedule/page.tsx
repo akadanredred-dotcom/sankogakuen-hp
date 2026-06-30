@@ -5,12 +5,15 @@ import Countdown from "@/app/components/Countdown";
 
 export default function SchedulePage() {
   return (
-    // 💡 justify-center から justify-start に変更し、上詰めにしました！
+    // justify-center から justify-start に変更し、上詰めにしました！
     <main className="min-h-screen bg-gray-50 flex flex-col items-center justify-start p-4 md:p-8 space-y-6">
       
-      {/* ⏰ カウントダウン（画面の一番上に横いっぱいに広げる） */}
-      <div className="w-full max-w-4xl flex flex-col items-stretch">
-        <Countdown footerId="footer" />
+      {/* ⏰ カウントダウン（最大幅 4xl の中で右寄せにする） */}
+      <div className="w-full max-w-4xl flex justify-end">
+        {/* コンポーネントが横に広がりすぎるのを防ぐため、divで囲んでいます */}
+        <div className="w-full sm:w-auto">
+          <Countdown footerId="footer" />
+        </div>
       </div>
       
       {/* 🖼️ 画像とボタンをまとめる箱 */}
