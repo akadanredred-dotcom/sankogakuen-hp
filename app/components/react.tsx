@@ -7,7 +7,7 @@ export default function AkadanPage() {
     <div className="w-full h-screen bg-black relative overflow-hidden font-sans">
       
       {/* =================================================================
-          PC版 (md以上) ：画像を画面いっぱいに隙間なく敷き詰める
+          PC版 (md以上) ：画像を画面の横・縦ぴったりに合わせて絶対に途切れさせない
           ================================================================= */}
       <div className="hidden md:block w-full h-full relative select-none">
         <Image
@@ -15,12 +15,12 @@ export default function AkadanPage() {
           alt="赤団 豹牙 PC版"
           fill
           priority
-          className="object-cover object-center" /* object-coverで余白を完全になくす */
+          className="object-fill" /* object-fill で画面の形に合わせて全体をぴったり収める */
         />
       </div>
 
       {/* =================================================================
-          スマホ版 (md未満) ：縦長画面いっぱいに敷き詰める
+          スマホ版 (md未満) ：縦長画面ぴったりに収める
           ================================================================= */}
       <div className="block md:hidden w-full h-full relative select-none">
         <Image
@@ -28,7 +28,7 @@ export default function AkadanPage() {
           alt="赤団 三箇条 スマホ版"
           fill
           priority
-          className="object-cover object-center" /* スマホも余白なしで全画面表示 */
+          className="object-fill" /* スマホも途切れずに全画面表示 */
         />
       </div>
 
