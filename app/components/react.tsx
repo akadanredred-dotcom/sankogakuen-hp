@@ -21,11 +21,9 @@ export default function AkadanPage() {
           width={700}
           height={1200}
           priority
-          className="w-[95%] h-[98%] object-contain"
+          className="w-full h-full object-cover"
         />
       </div>
-
-      {/* 黒いオーバーレイ */}
     </div>
   );
 }
