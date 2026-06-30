@@ -26,7 +26,7 @@ export default function AkadanPage() {
           <p
             className="absolute text-red-900 font-black"
             style={{
-              top: "11%",
+              top: "6%",
               left: "50%",
               transform: "translateX(-50%)",
               fontSize: "clamp(20px, 2vw, 34px)",
@@ -44,7 +44,7 @@ export default function AkadanPage() {
           <h1
             className="absolute text-[#8a1010] font-black"
             style={{
-              top: "23%",
+              top: "18%",
               left: "50%",
               transform: "translateX(-50%)",
               fontSize: "clamp(44px, 4.6vw, 74px)",
@@ -63,7 +63,7 @@ export default function AkadanPage() {
           <p
             className="absolute text-[#3b2a1a] font-black"
             style={{
-              top: "38.5%",
+              top: "33.5%",
               left: "50%",
               transform: "translateX(-50%)",
               fontSize: "clamp(26px, 2.7vw, 44px)",
@@ -80,7 +80,7 @@ export default function AkadanPage() {
           <div
             className="absolute bg-[#8a1010]/70"
             style={{
-              top: "46%",
+              top: "41%",
               left: "50%",
               transform: "translateX(-50%)",
               width: "5%",
