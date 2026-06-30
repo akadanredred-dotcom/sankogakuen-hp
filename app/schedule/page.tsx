@@ -8,9 +8,9 @@ export default function SchedulePage() {
     // 全体を画面の真ん中に集める設定はキープします
     <main className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4 space-y-6">
       
-      {/* ⏰ カウントダウン（外枠の縮める力を強制的に解除！） */}
+      {/* ⏰ カウントダウン（footerId="footer" を追加してエラーを解決しました！） */}
       <div className="w-full max-w-7xl flex flex-col items-stretch">
-        <Countdown />
+        <Countdown footerId="footer" />
       </div>
       
       {/* 🖼️ 画像とボタンをまとめる箱 */}
