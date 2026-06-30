@@ -37,9 +37,9 @@ export default function AwardsPage() {
 
       {/* 
               💡 修正ポイント
-              カウントダウンコンポーネントに、上で指定したフッターのIDを渡します。
+              カウントダウンコンポーネント
             */}
-      <Countdown footerId="main-footer" />
+      <Countdown />
     </main>
   );
 }
