@@ -178,6 +178,8 @@ export default function ShopMembers() {
             📅 日付
           </h4>
           <p className="text-gray-500 text-xs leading-relaxed">
+            2026年9月8日(火)～11日(金)三フェスweek
+            <br />
             2026年9月14日(月)会場設営、リハーサル
             <br />
             2026年9月15日(火)首都圏三幸フェスティバル本番
