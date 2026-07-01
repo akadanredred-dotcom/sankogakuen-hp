@@ -95,7 +95,7 @@ export default function Footer() {
 
       {/* コピーライト */}
       <div className="mx-auto mt-8 max-w-[1000px] border-t border-gray-100 pt-4 text-center text-xs text-gray-400">
-        &copy; 2026 赤団HP. All rights reserved.
+        &copy; 2026 豹牙HP. All rights reserved.
       </div>
     </footer>
   );
