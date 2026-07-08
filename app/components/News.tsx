@@ -1,13 +1,15 @@
-import React from "react";
+"use client"; // 💡 クリックイベント（useState）を使うため必須です
+
+import React, { useState } from "react";
 import Link from "next/link";
 
-// お知らせのデータ構造を定義
 interface NewsItem {
   id: string;
   date: string;
   category: "重要" | "お知らせ" | "イベント";
-  text: string;
-  slug: string; // 詳細ページへのリンク用
+  title: string;
+  href?: string;
+  expandedContent?: React.ReactNode; // 折りたたんで表示したい詳細コンテンツ
 }
 
 const newsData: NewsItem[] = [
@@ -15,19 +17,44 @@ const newsData: NewsItem[] = [
     id: "1",
     date: "2026.07.08",
     category: "重要",
-    text: "三フェス当日のタイムスケジュールが公開されました！",
-    slug: "schedule-open",
+    title: "三フェス当日のタイムスケジュールが公開されました！",
+    href: "/schedule", // 👈 クリックで直接スケジュールページへ
   },
   {
     id: "2",
     date: "2026.07.01",
-    category: "お知らせ",
-    text: "赤団の応援グッズ（喧嘩上等Tシャツなど）のデザインをアップデートしました。",
-    slug: "goods-update",
+    category: "イベント",
+    title: "📅 首都圏三幸フェスティバルの日程が決定しました！",
+    // 👈 クリックするとその場で浮き出てくるエリア
+    expandedContent: (
+      <div className="mt-4 p-5 bg-zinc-900 border-l-4 border-red-600 rounded-r-lg shadow-xl animate-fadeIn transition-all">
+        <h4 className="font-bold text-sm text-gray-100 flex items-center gap-2 mb-3">
+          📅 開催日程詳細
+        </h4>
+        <p className="text-zinc-300 text-xs md:text-sm leading-relaxed space-y-1">
+          <span className="block">
+            ・2026年9月8日(火)～11日(金) 三フェスweek
+          </span>
+          <span className="block">
+            ・2026年9月14日(月) 会場設営、リハーサル
+          </span>
+          <span className="block text-red-400 font-bold">
+            ・2026年9月15日(火) 首都圏三幸フェスティバル本番 🔥
+          </span>
+        </p>
+      </div>
+    ),
   },
 ];
 
 export default function News() {
+  const [openId, setOpenId] = useState<string | null>(null);
+
+  const toggleExpand = (id: string, hasContent: boolean) => {
+    if (!hasContent) return;
+    setOpenId(openId === id ? null : id);
+  };
+
   return (
     <section
       id="news"
@@ -44,51 +71,72 @@ export default function News() {
 
         {/* 記事リスト */}
         <ul className="divide-y divide-zinc-800">
-          {newsData.map((item) => (
-            <li key={item.id} className="group">
-              <Link
-                href={`/news/${item.slug}`}
-                className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6 py-4 px-2 transition-colors duration-200 group-hover:bg-zinc-900/50 rounded-lg"
-              >
-                {/* 日付 */}
-                <span className="text-zinc-400 font-mono text-sm">
-                  {item.date}
-                </span>
+          {newsData.map((item) => {
+            const hasContent = !!item.expandedContent;
+            const isOpen = openId === item.id;
 
-                {/* カテゴリタグ */}
-                <span
-                  className={`inline-block text-center text-xs font-bold px-3 py-1 rounded w-fit ${
-                    item.category === "重要"
-                      ? "bg-red-600 text-white animate-pulse"
-                      : "bg-zinc-700 text-zinc-200"
-                  }`}
-                >
-                  {item.category}
-                </span>
+            return (
+              <li key={item.id} className="py-2">
+                {/* 1. 通常のページリンク（タイムスケジュールなど） */}
+                {item.href ? (
+                  <Link
+                    href={item.href}
+                    className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6 py-4 px-2 transition-colors duration-200 hover:bg-zinc-900/50 rounded-lg group"
+                  >
+                    <span className="text-zinc-400 font-mono text-sm min-w-[85px]">
+                      {item.date}
+                    </span>
+                    <span className="inline-block text-center text-xs font-bold px-3 py-1 rounded w-fit min-w-[70px] bg-red-600 text-white animate-pulse">
+                      {item.category}
+                    </span>
+                    <p className="text-zinc-200 group-hover:text-red-400 transition-colors flex-1 text-sm md:text-base leading-relaxed">
+                      {item.title}
+                    </p>
+                    <span className="hidden md:block text-zinc-600 group-hover:text-red-500 group-hover:translate-x-0.5 transition-all">
+                      →
+                    </span>
+                  </Link>
+                ) : (
+                  // 2. その場でアコーディオン展開（日程決定など）
+                  <div className="w-full">
+                    <button
+                      onClick={() => toggleExpand(item.id, hasContent)}
+                      className="w-full text-left flex flex-col md:flex-row md:items-center gap-2 md:gap-6 py-4 px-2 transition-colors duration-200 hover:bg-zinc-900/50 rounded-lg focus:outline-none group"
+                    >
+                      <span className="text-zinc-400 font-mono text-sm min-w-[85px]">
+                        {item.date}
+                      </span>
+                      <span className="inline-block text-center text-xs font-bold px-3 py-1 rounded w-fit min-w-[70px] bg-zinc-700 text-zinc-200">
+                        {item.category}
+                      </span>
+                      <p className="text-zinc-200 group-hover:text-red-400 transition-colors flex-1 text-sm md:text-base leading-relaxed">
+                        {item.title}
+                      </p>
+                      <span
+                        className={`hidden md:block text-zinc-500 transition-transform duration-300 ${isOpen ? "rotate-90 text-red-500" : ""}`}
+                      >
+                        ▶
+                      </span>
+                    </button>
 
-                {/* タイトル */}
-                <p className="text-zinc-200 group-hover:text-red-400 transition-colors flex-1 text-sm md:text-base leading-relaxed">
-                  {item.text}
-                </p>
-
-                {/* 矢印アイコン (デスクトップ用) */}
-                <span className="hidden md:block text-zinc-600 group-hover:text-red-500 group-hover:translate-x-1 transition-all">
-                  →
-                </span>
-              </Link>
-            </li>
-          ))}
+                    {/* 開閉アニメーションエリア */}
+                    <div
+                      className={`grid transition-all duration-300 ease-in-out ${
+                        isOpen
+                          ? "grid-rows-[1fr] opacity-100"
+                          : "grid-rows-[0fr] opacity-0 pointer-events-none"
+                      }`}
+                    >
+                      <div className="overflow-hidden">
+                        <div className="px-2 pb-4">{item.expandedContent}</div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </li>
+            );
+          })}
         </ul>
-
-        {/* もっと見るボタン */}
-        <div className="text-center mt-8">
-          <Link
-            href="/news"
-            className="inline-block border border-zinc-700 text-zinc-300 hover:text-white hover:border-red-600 hover:bg-red-600/10 px-6 py-2 rounded-full text-sm font-medium transition-all duration-300"
-          >
-            一覧を見る →
-          </Link>
-        </div>
       </div>
     </section>
   );
