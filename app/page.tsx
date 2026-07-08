@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Hero from "./components/Hero";
+
 import SanFesSection from "./components/Main";
 import AkadanSection from "./components/react";
 import ArticleSection from "./components/ArticleSection";
@@ -8,6 +9,7 @@ import ScrollReveal from "./components/ScrollReveal";
 import Footer from "./3fes/components/Footer";
 import Memories from "./components/Memories";
 import Countdown from "./components/Countdown";
+import News from "./components/News";
 
 export const metadata: Metadata = {
   title: "豹牙HP",
@@ -28,6 +30,11 @@ export default function Home() {
           backgroundImage={"/img/hero-bg.png"}
           mobileBackgroundImage="/img/baoisgay.jpg"
         />
+
+        {/* 🆕 ここに追加！お知らせセクション */}
+        <ScrollReveal direction="left">
+          <News />
+        </ScrollReveal>
 
         <ScrollReveal direction="left">
           <SanFesSection />
