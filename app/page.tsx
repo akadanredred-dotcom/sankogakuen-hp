@@ -10,6 +10,8 @@ import Footer from "./3fes/components/Footer";
 import Memories from "./components/Memories";
 import Countdown from "./components/Countdown";
 import News from "./components/News";
+// 🆕 VideoCarouselをインポート
+import VideoCarousel from "./components/VideoCarousel"; 
 
 export const metadata: Metadata = {
   title: "豹牙HP",
@@ -46,6 +48,11 @@ export default function Home() {
 
         <ScrollReveal direction="left">
           <Memories />
+        </ScrollReveal>
+
+        {/* 🆕 ここに追加！動画カルーセルセクション */}
+        <ScrollReveal direction="left">
+          <VideoCarousel />
         </ScrollReveal>
 
         <ScrollReveal direction="left">
