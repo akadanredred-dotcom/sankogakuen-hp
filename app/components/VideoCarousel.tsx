@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Navigation } from "swiper/modules";
 
@@ -21,6 +21,9 @@ export default function VideoCarousel() {
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const swiperRef = useRef<any>(null);
 
+  // 🔊 音声のON/OFF状態
+  const [isMuted, setIsMuted] = useState(true);
+
   // アクティブなスライドの動画だけを再生する制御
   const handleSlideChange = (swiper: any) => {
     videoRefs.current.forEach((video, index) => {
@@ -28,6 +31,7 @@ export default function VideoCarousel() {
 
       if (index === swiper.realIndex) {
         video.currentTime = 0;
+        video.muted = isMuted;
         video.play().catch((err) => console.log("再生ブロック:", err));
       } else {
         video.pause();
@@ -43,13 +47,25 @@ export default function VideoCarousel() {
     }
   };
 
+  // 🔊 音声ボタンがクリックされた時の処理
+  const toggleMute = () => {
+    const newMutedState = !isMuted;
+    setIsMuted(newMutedState);
+
+    if (swiperRef.current) {
+      const activeIndex = swiperRef.current.realIndex;
+      const currentVideo = videoRefs.current[activeIndex];
+      if (currentVideo) {
+        currentVideo.muted = newMutedState;
+      }
+    }
+  };
+
   return (
-    /* 🆕 お知らせリンクからのジャンプ用に id="video-carousel" と scroll-mt-10 を追加 */
     <div
       id="video-carousel"
-      className="w-full max-w-md md:max-w-2xl mx-auto py-10 px-4 bg-gray-50 md:bg-transparent overflow-hidden relative group scroll-mt-10"
+      className="w-full max-w-md md:max-w-2xl mx-auto py-10 px-2 md:px-4 bg-gray-50 md:bg-transparent overflow-hidden relative group scroll-mt-10"
     >
-      {/* 💡 スタイル注入：中央（active）以外のスライドの不透明度を下げて色を薄くする */}
       <style jsx global>{`
         .swiper-slide {
           opacity: 0.4;
@@ -60,12 +76,31 @@ export default function VideoCarousel() {
         }
       `}</style>
 
+      {/* 🔊 ミュート切り替えボタン */}
+      <button
+        onClick={toggleMute}
+        className="absolute top-14 right-4 md:right-6 z-30 bg-black/60 hover:bg-black/80 text-white p-2.5 rounded-full transition-colors backdrop-blur-sm cursor-pointer select-none flex items-center justify-center shadow-lg"
+        title={isMuted ? "音声をオンにする" : "音声をオフにする"}
+      >
+        {isMuted ? (
+          <span className="text-xs md:text-sm font-medium px-1">🔇 音なし</span>
+        ) : (
+          <span className="text-xs md:text-sm font-medium px-1">🔊 音あり</span>
+        )}
+      </button>
+
       <Swiper
         modules={[EffectCoverflow, Navigation]}
         effect={"coverflow"}
         grabCursor={true}
         centeredSlides={true}
-        slidesPerView={1.6}
+        // 💡 画面サイズに合わせて表示枚数を調整（スマホ版はより大きく見せるため 1.2 に変更）
+        slidesPerView={1.2}
+        breakpoints={{
+          768: {
+            slidesPerView: 1.6,
+          },
+        }}
         loop={true}
         coverflowEffect={{
           rotate: 0,
@@ -87,14 +122,13 @@ export default function VideoCarousel() {
       >
         {videoData.map((video, index) => (
           <SwiperSlide key={video.id} className="overflow-visible">
-            {/* PC版では高さを固定しないように md:aspect-auto に調整 */}
             <div className="relative aspect-[9/16] md:aspect-auto w-full rounded-2xl overflow-hidden shadow-2xl bg-zinc-900">
               <video
                 ref={(el) => {
                   videoRefs.current[index] = el;
                 }}
                 src={video.src}
-                muted
+                muted={isMuted}
                 playsInline
                 onEnded={handleVideoEnded}
                 className="absolute inset-0 md:relative w-full h-full object-cover z-0"
@@ -104,13 +138,13 @@ export default function VideoCarousel() {
         ))}
       </Swiper>
 
-      {/* 左側移動ボタン */}
-      <button className="swiper-button-prev-custom absolute left-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 flex items-center justify-center bg-black/30 hover:bg-black/50 text-white rounded-full transition-colors cursor-pointer select-none">
+      {/* 左側移動ボタン（視認性を上げるため背景を black/40 に微調整） */}
+      <button className="swiper-button-prev-custom absolute left-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 flex items-center justify-center bg-black/40 hover:bg-black/60 text-white rounded-full transition-colors cursor-pointer select-none">
         &#10094;
       </button>
 
       {/* 右側移動ボタン */}
-      <button className="swiper-button-next-custom absolute right-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 flex items-center justify-center bg-black/30 hover:bg-black/50 text-white rounded-full transition-colors cursor-pointer select-none">
+      <button className="swiper-button-next-custom absolute right-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 flex items-center justify-center bg-black/40 hover:bg-black/60 text-white rounded-full transition-colors cursor-pointer select-none">
         &#10095;
       </button>
     </div>
