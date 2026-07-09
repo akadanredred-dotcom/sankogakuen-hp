@@ -1,20 +1,20 @@
-'use client';
+"use client";
 
-import { useRef } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCoverflow, Navigation } from 'swiper/modules'; 
+import { useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectCoverflow, Navigation } from "swiper/modules";
 
-import 'swiper/css';
-import 'swiper/css/effect-coverflow';
-import 'swiper/css/navigation';
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/navigation";
 
 const videoData = [
-  { id: 1, src: '/movise/movise1.mp4' },
-  { id: 2, src: '/movise/movise2.mp4' },
-  { id: 3, src: '/movise/movise3.mp4' },
-  { id: 4, src: '/movise/movise4.mp4' },
-  { id: 5, src: '/movise/movise5.mp4' },
-  { id: 6, src: '/movise/movise6.mp4' },
+  { id: 1, src: "/movise/movise1.mp4" },
+  { id: 2, src: "/movise/movise2.mp4" },
+  { id: 3, src: "/movise/movise3.mp4" },
+  { id: 4, src: "/movise/movise4.mp4" },
+  { id: 5, src: "/movise/movise5.mp4" },
+  { id: 6, src: "/movise/movise6.mp4" },
 ];
 
 export default function VideoCarousel() {
@@ -44,9 +44,11 @@ export default function VideoCarousel() {
   };
 
   return (
-    /* PC版のコンテンツ幅をさらに広げて、左右の動画がしっかり見えるように max-w-2xl に拡張 */
-    <div className="w-full max-w-md md:max-w-2xl mx-auto py-10 px-4 bg-gray-50 md:bg-transparent overflow-hidden relative group">
-      
+    /* 🆕 お知らせリンクからのジャンプ用に id="video-carousel" と scroll-mt-10 を追加 */
+    <div
+      id="video-carousel"
+      className="w-full max-w-md md:max-w-2xl mx-auto py-10 px-4 bg-gray-50 md:bg-transparent overflow-hidden relative group scroll-mt-10"
+    >
       {/* 💡 スタイル注入：中央（active）以外のスライドの不透明度を下げて色を薄くする */}
       <style jsx global>{`
         .swiper-slide {
@@ -60,22 +62,21 @@ export default function VideoCarousel() {
 
       <Swiper
         modules={[EffectCoverflow, Navigation]}
-        effect={'coverflow'}
+        effect={"coverflow"}
         grabCursor={true}
         centeredSlides={true}
-        /* 💡 1.3 から 1.6 に変更し、前後の動画がより広く画面内に入るようにしました */
-        slidesPerView={1.6} 
+        slidesPerView={1.6}
         loop={true}
         coverflowEffect={{
-          rotate: 0,       
-          stretch: -10,    // スライド間の隙間を少し詰めて綺麗に見せる調整
-          depth: 80,       // 奥への引っ込み具合を少し浅くして見やすく
-          modifier: 2,   
-          slideShadows: false, 
+          rotate: 0,
+          stretch: -10,
+          depth: 80,
+          modifier: 2,
+          slideShadows: false,
         }}
         navigation={{
-          nextEl: '.swiper-button-next-custom',
-          prevEl: '.swiper-button-prev-custom',
+          nextEl: ".swiper-button-next-custom",
+          prevEl: ".swiper-button-prev-custom",
         }}
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
@@ -86,9 +87,12 @@ export default function VideoCarousel() {
       >
         {videoData.map((video, index) => (
           <SwiperSlide key={video.id} className="overflow-visible">
+            {/* PC版では高さを固定しないように md:aspect-auto に調整 */}
             <div className="relative aspect-[9/16] md:aspect-auto w-full rounded-2xl overflow-hidden shadow-2xl bg-zinc-900">
               <video
-                ref={(el) => { videoRefs.current[index] = el; }}
+                ref={(el) => {
+                  videoRefs.current[index] = el;
+                }}
                 src={video.src}
                 muted
                 playsInline

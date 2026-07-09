@@ -1,7 +1,7 @@
 "use client"; // 💡 クリックイベント（useState）を使うため必須です
 
 import React, { useState } from "react";
-import Link from "next/link";
+import Link from "next/link"; // 💡 Linkコンポーネントのエラーを回避するため、しっかりインポートを残します
 
 interface NewsItem {
   id: string;
@@ -13,6 +13,14 @@ interface NewsItem {
 }
 
 const newsData: NewsItem[] = [
+  // 🆕 新しく追加：応援動画のお知らせ
+  {
+    id: "3",
+    date: "2026.07.09",
+    category: "お知らせ",
+    title: "🎬 仲間と共に全力で挑む！応援動画が公開されました！",
+    href: "video-carousel", // 👈 URLの末尾を汚さないよう「#」を外してID名だけにします
+  },
   {
     id: "1",
     date: "2026.07.08",
@@ -75,29 +83,70 @@ export default function News() {
             const hasContent = !!item.expandedContent;
             const isOpen = openId === item.id;
 
+            // 💡 hrefが設定されており、かつ「/」から始まらない場合はページ内リンクと判定
+            const isAnchorLink = item.href && !item.href.startsWith("/");
+
+            // カテゴリごとの背景色を出し分け
+            const categoryBg =
+              item.category === "重要"
+                ? "bg-red-600 text-white animate-pulse"
+                : item.category === "イベント"
+                  ? "bg-zinc-700 text-zinc-200"
+                  : "bg-blue-600 text-white"; // お知らせ用の青
+
             return (
               <li key={item.id} className="py-2">
-                {/* 1. 通常のページリンク（タイムスケジュールなど） */}
                 {item.href ? (
-                  <Link
-                    href={item.href}
-                    className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6 py-4 px-2 transition-colors duration-200 hover:bg-zinc-900/50 rounded-lg group"
-                  >
-                    <span className="text-zinc-400 font-mono text-sm min-w-[85px]">
-                      {item.date}
-                    </span>
-                    <span className="inline-block text-center text-xs font-bold px-3 py-1 rounded w-fit min-w-[70px] bg-red-600 text-white animate-pulse">
-                      {item.category}
-                    </span>
-                    <p className="text-zinc-200 group-hover:text-red-400 transition-colors flex-1 text-sm md:text-base leading-relaxed">
-                      {item.title}
-                    </p>
-                    <span className="hidden md:block text-zinc-600 group-hover:text-red-500 group-hover:translate-x-0.5 transition-all">
-                      →
-                    </span>
-                  </Link>
+                  isAnchorLink ? (
+                    // 2-A. 【追加】URLを変えずにスクロールするページ内リンク用のボタン
+                    <button
+                      onClick={() => {
+                        const element = document.getElementById(item.href!);
+                        if (element) {
+                          element.scrollIntoView({ behavior: "smooth" });
+                        }
+                      }}
+                      className="w-full text-left flex flex-col md:flex-row md:items-center gap-2 md:gap-6 py-4 px-2 transition-colors duration-200 hover:bg-zinc-900/50 rounded-lg group focus:outline-none"
+                    >
+                      <span className="text-zinc-400 font-mono text-sm min-w-[85px]">
+                        {item.date}
+                      </span>
+                      <span
+                        className={`inline-block text-center text-xs font-bold px-3 py-1 rounded w-fit min-w-[70px] ${categoryBg}`}
+                      >
+                        {item.category}
+                      </span>
+                      <p className="text-zinc-200 group-hover:text-red-400 transition-colors flex-1 text-sm md:text-base leading-relaxed">
+                        {item.title}
+                      </p>
+                      <span className="hidden md:block text-zinc-600 group-hover:text-red-500 group-hover:translate-x-0.5 transition-all">
+                        ↓
+                      </span>
+                    </button>
+                  ) : (
+                    // 1. 通常の別ページリンク（タイムスケジュールなど）
+                    <Link
+                      href={item.href}
+                      className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6 py-4 px-2 transition-colors duration-200 hover:bg-zinc-900/50 rounded-lg group"
+                    >
+                      <span className="text-zinc-400 font-mono text-sm min-w-[85px]">
+                        {item.date}
+                      </span>
+                      <span
+                        className={`inline-block text-center text-xs font-bold px-3 py-1 rounded w-fit min-w-[70px] ${categoryBg}`}
+                      >
+                        {item.category}
+                      </span>
+                      <p className="text-zinc-200 group-hover:text-red-400 transition-colors flex-1 text-sm md:text-base leading-relaxed">
+                        {item.title}
+                      </p>
+                      <span className="hidden md:block text-zinc-600 group-hover:text-red-500 group-hover:translate-x-0.5 transition-all">
+                        →
+                      </span>
+                    </Link>
+                  )
                 ) : (
-                  // 2. その場でアコーディオン展開（日程決定など）
+                  // 2-B. その場でアコーディオン展開（日程決定など）
                   <div className="w-full">
                     <button
                       onClick={() => toggleExpand(item.id, hasContent)}
@@ -106,7 +155,9 @@ export default function News() {
                       <span className="text-zinc-400 font-mono text-sm min-w-[85px]">
                         {item.date}
                       </span>
-                      <span className="inline-block text-center text-xs font-bold px-3 py-1 rounded w-fit min-w-[70px] bg-zinc-700 text-zinc-200">
+                      <span
+                        className={`inline-block text-center text-xs font-bold px-3 py-1 rounded w-fit min-w-[70px] ${categoryBg}`}
+                      >
                         {item.category}
                       </span>
                       <p className="text-zinc-200 group-hover:text-red-400 transition-colors flex-1 text-sm md:text-base leading-relaxed">

@@ -117,66 +117,6 @@ export default function ShopMembers() {
           />
         ))}
       </div>
-
-      {/* 下部のサブ見出しテキストグリッド */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 border-t border-gray-100 pt-12 text-center">
-        {/* 📣 応援 */}
-        <div className="space-y-2 flex flex-col items-center">
-          <h4 className="font-bold text-sm text-gray-900 border-l-4 border-red-600 pl-3">
-            📣 応援
-          </h4>
-          <ul className="text-gray-500 text-xs leading-relaxed space-y-1 list-none">
-            <li>喧嘩上等</li>
-            <li>盛り上がりが足りない</li>
-            <li>Gフレア</li>
-            <li>日曜日よりの使者</li>
-            <li>We are reds</li>
-            <li>アゲホイ</li>
-          </ul>
-        </div>
-        {/* 🕰️ 当日スケジュール */}
-        <div className="flex flex-col items-center space-y-4">
-          <Link href="/schedule" className="group block w-full no-underline">
-            <div className="space-y-2 flex flex-col items-center">
-              <h4 className="font-bold text-sm text-gray-900 border-l-4 border-red-600 pl-3 group-hover:text-red-600 transition-colors">
-                🕰️ 当日スケジュール
-              </h4>
-              <p className="text-gray-500 text-xs leading-relaxed text-center no-underline">
-                当日の詳細なタイムスケジュール（時間割）はこちらからご確認いただけます。
-              </p>
-              <span className="inline-flex items-center gap-1 rounded-full bg-red-600 px-4 py-1.5 text-xs font-semibold text-white transition-colors group-hover:bg-red-700">
-                スケジュールを見る
-                <svg
-                  className="w-3 h-3 transition-transform group-hover:translate-x-0.5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2.5}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </span>
-            </div>
-          </Link>
-        </div>
-        {/* 📅 日付 */}
-        <div className="space-y-2 flex flex-col items-center">
-          <h4 className="font-bold text-sm text-gray-900 border-l-4 border-red-600 pl-3">
-            📅 日付
-          </h4>
-          <p className="text-gray-500 text-xs leading-relaxed">
-            2026年9月8日(火)～11日(金)三フェスweek
-            <br />
-            2026年9月14日(月)会場設営、リハーサル
-            <br />
-            2026年9月15日(火)首都圏三幸フェスティバル本番
-          </p>
-        </div>
-      </div>
     </section>
   );
 }
