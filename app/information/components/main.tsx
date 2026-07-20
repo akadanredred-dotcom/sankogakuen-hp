@@ -18,7 +18,9 @@ export default function ContactForm() {
     setIsSubmitted(true);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
@@ -27,7 +29,9 @@ export default function ContactForm() {
     return (
       <div className="text-center py-10 space-y-4">
         <div className="text-4xl">🔥</div>
-        <h2 className="text-xl font-black text-gray-900">送信が完了しました！</h2>
+        <h2 className="text-xl font-black text-gray-900">
+          送信が完了しました！
+        </h2>
         <p className="text-xs text-gray-600 font-bold max-w-sm mx-auto leading-relaxed">
           お問い合わせありがとうございます。内容を確認のうえ、担当者よりご連絡いたします。
         </p>
@@ -57,7 +61,7 @@ export default function ContactForm() {
           required
           value={formData.name}
           onChange={handleChange}
-          placeholder="山田 太郎"
+          placeholder="例：赤団　豹牙"
           className="w-full text-sm font-bold p-3 rounded-xl border border-gray-200 bg-gray-50/50 focus:outline-none focus:border-red-500 focus:bg-white transition"
         />
       </div>
