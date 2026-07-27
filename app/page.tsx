@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import Hero from "./components/Hero";
-
 import SanFesSection from "./components/Main";
 import AkadanSection from "./components/react";
 import ArticleSection from "./components/ArticleSection";
@@ -10,8 +9,10 @@ import Footer from "./3fes/components/Footer";
 import Memories from "./components/Memories";
 import Countdown from "./components/Countdown";
 import News from "./components/News";
-// 🆕 VideoCarouselをインポート
-import VideoCarousel from "./components/VideoCarousel"; 
+import VideoCarousel from "./components/VideoCarousel";
+import ConfettiTrigger from "./components/ConfettiTrigger";
+// 🆕 切り出した紙吹雪コンポーネントをインポート
+
 
 export const metadata: Metadata = {
   title: "豹牙HP",
@@ -26,14 +27,15 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div className="min-h-screen bg-white text-slate-900 flex flex-col">
-      {/* 💡 CRITICAL: This relative wrapper locks the countdown's absolute position */}
+      {/* 🆕 紙吹雪の自動トリガー */}
+      <ConfettiTrigger />
+
       <div className="relative flex-1 w-full">
         <Hero
           backgroundImage={"/img/hero-bg.png"}
           mobileBackgroundImage="/img/baoisgay.jpg"
         />
 
-        {/* 🆕 ここに追加！お知らせセクション */}
         <ScrollReveal direction="left">
           <News />
         </ScrollReveal>
@@ -50,7 +52,6 @@ export default function Home() {
           <Memories />
         </ScrollReveal>
 
-        {/* 🆕 ここに追加！動画カルーセルセクション */}
         <ScrollReveal direction="left">
           <VideoCarousel />
         </ScrollReveal>
@@ -100,11 +101,9 @@ export default function Home() {
           </div>
         </ScrollReveal>
 
-        {/* 💡 The countdown goes inside this container at the very end */}
         <Countdown footerId="page-footer" />
       </div>
 
-      {/* 💡 Give your footer the ID so the component can track it */}
       <div id="page-footer">
         <Footer />
       </div>
