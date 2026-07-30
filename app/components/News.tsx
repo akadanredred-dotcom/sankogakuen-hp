@@ -13,6 +13,15 @@ interface NewsItem {
 }
 
 const newsData: NewsItem[] = [
+  // 🆕 新しく追加：「2026年の思い出」への案内お知らせ
+  {
+    id: "5",
+    date: "2026.07.10",
+    category: "お知らせ",
+    title:
+      "📸 2026年の思い出ページが公開されました！みんなの写真やエピソードを投稿しよう！",
+    href: "/memories-2026", // 👈 先ほど作った2026年の思い出一覧ページへジャンプ
+  },
   // 🆕 新しく追加：応援ページへの案内お知らせ
   {
     id: "4",
@@ -66,11 +75,15 @@ const newsData: NewsItem[] = [
 
 export default function News() {
   const [openId, setOpenId] = useState<string | null>(null);
+  const [showAll, setShowAll] = useState(false); // 💡 「もっと見る」で全件表示するかどうかの状態
 
   const toggleExpand = (id: string, hasContent: boolean) => {
     if (!hasContent) return;
     setOpenId(openId === id ? null : id);
   };
+
+  // 💡 初期状態では最大3件まで表示し、「もっと見る」が押されたら全件表示する
+  const displayedNews = showAll ? newsData : newsData.slice(0, 3);
 
   return (
     <section
@@ -82,13 +95,13 @@ export default function News() {
         <div className="flex items-baseline gap-4 mb-8 border-b border-red-600 pb-2">
           <h2 className="text-2xl font-bold tracking-wider">お知らせ</h2>
           <span className="text-xs text-zinc-400 tracking-widest font-mono">
-            NEWS
+            NEWS ({newsData.length}件)
           </span>
         </div>
 
         {/* 記事リスト */}
         <ul className="divide-y divide-zinc-800">
-          {newsData.map((item) => {
+          {displayedNews.map((item) => {
             const hasContent = !!item.expandedContent;
             const isOpen = openId === item.id;
 
@@ -173,7 +186,7 @@ export default function News() {
                         {item.title}
                       </p>
                       <span
-                        className={`hidden md:block text-zinc-500 transition-transform duration-300 ${isOpen ? "rotate-90 text-red-500" : ""}`}
+                        className={`hidden md:block text-zinc-500 transition-transform duration-300 ${isOpen ? "rotate-95 text-red-500" : ""}`}
                       >
                         ▶
                       </span>
@@ -197,6 +210,20 @@ export default function News() {
             );
           })}
         </ul>
+
+        {/* 💡 3件以上ある場合に「もっと見る」ボタンを表示して展開する */}
+        {newsData.length > 3 && (
+          <div className="mt-8 text-center">
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="py-2.5 px-8 bg-zinc-800 border border-zinc-700 text-zinc-300 font-bold rounded-lg shadow hover:bg-zinc-700 hover:text-white transition-all duration-200"
+            >
+              {showAll
+                ? "閉じる"
+                : `もっと見る (${newsData.length}件すべて表示) ↓`}
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

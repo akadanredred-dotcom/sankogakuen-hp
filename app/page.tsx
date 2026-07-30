@@ -1,3 +1,4 @@
+// app/page.tsx (または該当ファイルのパス)
 import Hero from "./components/Hero";
 import SanFesSection from "./components/Main";
 import AkadanSection from "./components/react";
@@ -6,96 +7,100 @@ import GoogleMap from "./components/GoogleMap";
 import ScrollReveal from "./components/ScrollReveal";
 import Footer from "./3fes/components/Footer";
 import Memories from "./components/Memories";
+import Memories2026 from "./components/Memories2026"; // 💡 2026年用コンポーネントをインポート
 import Countdown from "./components/Countdown";
 import News from "./components/News";
 import VideoCarousel from "./components/VideoCarousel";
-import VisitorMilestoneTracker from "./components/VisitorMilestoneTracker"; // 💡 Import the tracker
+import VisitorMilestoneTracker from "./components/VisitorMilestoneTracker";
 
 export default function Home() {
-    return (
-        <div className="min-h-screen bg-white text-slate-900 flex flex-col relative">
-            {/* 💡 Client-side logic is safely isolated here */}
-            <VisitorMilestoneTracker />
+  return (
+    <div className="min-h-screen bg-white text-slate-900 flex flex-col relative">
+      <VisitorMilestoneTracker />
 
-            <div className="relative flex-1 w-full">
-                <Hero
-                    backgroundImage={"/img/hero-bg.png"}
-                    mobileBackgroundImage="/img/baoisgay.jpg"
-                />
+      <div className="relative flex-1 w-full">
+        <Hero
+          backgroundImage={"/img/hero-bg.png"}
+          mobileBackgroundImage="/img/baoisgay.jpg"
+        />
 
-                <ScrollReveal direction="left">
-                    <News />
-                </ScrollReveal>
+        <ScrollReveal direction="left">
+          <News />
+        </ScrollReveal>
 
-                <ScrollReveal direction="left">
-                    <SanFesSection />
-                </ScrollReveal>
+        <ScrollReveal direction="left">
+          <SanFesSection />
+        </ScrollReveal>
 
-                <ScrollReveal direction="left">
-                    <AkadanSection />
-                </ScrollReveal>
+        <ScrollReveal direction="left">
+          <AkadanSection />
+        </ScrollReveal>
 
-                <ScrollReveal direction="left">
-                    <Memories />
-                </ScrollReveal>
+        {/* 2025年の思い出 */}
+        <ScrollReveal direction="left">
+          <Memories />
+        </ScrollReveal>
 
-                <ScrollReveal direction="left">
-                    <VideoCarousel />
-                </ScrollReveal>
+        {/* 💡 2026年の思い出を2025年の直下に追加 */}
+        <ScrollReveal direction="left">
+          <Memories2026 />
+        </ScrollReveal>
 
-                <ScrollReveal direction="left">
-                    <ArticleSection />
-                </ScrollReveal>
+        <ScrollReveal direction="left">
+          <VideoCarousel />
+        </ScrollReveal>
 
-                <ScrollReveal direction="up">
-                    <div className="max-w-[1000px] my-[60px] mx-auto px-5">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                            <div className="rounded overflow-hidden aspect-[4/3]">
-                                <GoogleMap />
-                            </div>
-                            <div>
-                                <div className="flex-1 min-w-[300px] p-5 bg-[#f9f9f9] rounded-lg shadow-sm">
-                                    <h2 className="text-2xl font-bold mb-[15px] text-[#333]">
-                                        開催概要
-                                    </h2>
-                                    <ul className="list-none p-0 m-0 leading-[1.8]">
-                                        <li className="mb-2.5">
-                                            <strong>イベント名:</strong>{" "}
-                                            三幸学園フェスティバル
-                                        </li>
-                                        <li className="mb-2.5">
-                                            <strong>日程:</strong>
-                                            <span className="block pl-[15px]">
-                                                ・2026年9月14日(月)
-                                                会場設営・リハーサル
-                                            </span>
-                                            <span className="block pl-[15px]">
-                                                ・2026年9月15日(火) 本番
-                                            </span>
-                                        </li>
-                                    </ul>
-                                    <div className="mt-5">
-                                        <a
-                                            href="https://maps.google.com/maps?ll=35.670065,139.694966&z=16&t=m&hl=ja&gl=JP&mapclient=embed&cid=3800131593595043646"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="inline-block py-2.5 px-5 bg-[#d32f2f] text-white no-underline rounded font-bold transition-colors hover:bg-[#b71c1c]"
-                                        >
-                                            Googleマップで開く
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </ScrollReveal>
+        <ScrollReveal direction="left">
+          <ArticleSection />
+        </ScrollReveal>
 
-                <Countdown footerId="page-footer" />
+        <ScrollReveal direction="up">
+          <div className="max-w-[1000px] my-[60px] mx-auto px-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+              <div className="rounded overflow-hidden aspect-[4/3]">
+                <GoogleMap />
+              </div>
+              <div>
+                <div className="flex-1 min-w-[300px] p-5 bg-[#f9f9f9] rounded-lg shadow-sm">
+                  <h2 className="text-2xl font-bold mb-[15px] text-[#333]">
+                    開催概要
+                  </h2>
+                  <ul className="list-none p-0 m-0 leading-[1.8]">
+                    <li className="mb-2.5">
+                      <strong>イベント名:</strong> 三幸学園フェスティバル
+                    </li>
+                    <li className="mb-2.5">
+                      <strong>日程:</strong>
+                      <span className="block pl-[15px]">
+                        ・2026年9月14日(月) 会場設営・リハーサル
+                      </span>
+                      <span className="block pl-[15px]">
+                        ・2026年9月15日(火) 本番
+                      </span>
+                    </li>
+                  </ul>
+                  <div className="mt-5">
+                    <a
+                      href="https://maps.google.com/maps?ll=35.670065,139.694966&z=16&t=m&hl=ja&gl=JP&mapclient=embed&cid=3800131593595043646"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block py-2.5 px-5 bg-[#d32f2f] text-white no-underline rounded font-bold transition-colors hover:bg-[#b71c1c]"
+                    >
+                      Googleマップで開く
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
+        </ScrollReveal>
 
-            <div id="page-footer">
-                <Footer />
-            </div>
-        </div>
-    );
+        <Countdown footerId="page-footer" />
+      </div>
+
+      <div id="page-footer">
+        <Footer />
+      </div>
+    </div>
+  );
 }
