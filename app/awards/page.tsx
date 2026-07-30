@@ -4,7 +4,7 @@ import React from "react";
 import AwardsHero from "./components/Hero";
 import AwardsMain from "./components/Main";
 import Navbar from "../components/Navbar";
-import Countdown from "./components/Countdown";
+import Countdown from "../components/Countdown";
 import Footer from "../3fes/components/Footer";
 
 export default function AwardsPage() {
