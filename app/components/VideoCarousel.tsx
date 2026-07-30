@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Navigation } from "swiper/modules";
+import Link from "next/link"; // Next.jsのLinkコンポーネントを使用する場合
 
 import "swiper/css";
 import "swiper/css/effect-coverflow";
@@ -64,7 +65,7 @@ export default function VideoCarousel() {
   return (
     <div
       id="video-carousel"
-      className="w-full max-w-md md:max-w-2xl mx-auto py-10 px-2 md:px-4 bg-gray-50 md:bg-transparent overflow-hidden relative group scroll-mt-10"
+      className="w-full max-w-md md:max-w-2xl mx-auto py-10 px-2 md:px-4 bg-gray-50 md:bg-transparent overflow-hidden relative group scroll-mt-10 flex flex-col items-center"
     >
       <style jsx global>{`
         .swiper-slide {
@@ -94,7 +95,6 @@ export default function VideoCarousel() {
         effect={"coverflow"}
         grabCursor={true}
         centeredSlides={true}
-        // 💡 画面サイズに合わせて表示枚数を調整（スマホ版はより大きく見せるため 1.2 に変更）
         slidesPerView={1.2}
         breakpoints={{
           768: {
@@ -138,15 +138,25 @@ export default function VideoCarousel() {
         ))}
       </Swiper>
 
-      {/* 左側移動ボタン（視認性を上げるため背景を black/40 に微調整） */}
-      <button className="swiper-button-prev-custom absolute left-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 flex items-center justify-center bg-black/40 hover:bg-black/60 text-white rounded-full transition-colors cursor-pointer select-none">
+      {/* 左側移動ボタン */}
+      <button className="swiper-button-prev-custom absolute left-2 top-[calc(50%-2rem)] -translate-y-1/2 z-20 w-10 h-10 flex items-center justify-center bg-black/40 hover:bg-black/60 text-white rounded-full transition-colors cursor-pointer select-none">
         &#10094;
       </button>
 
       {/* 右側移動ボタン */}
-      <button className="swiper-button-next-custom absolute right-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 flex items-center justify-center bg-black/40 hover:bg-black/60 text-white rounded-full transition-colors cursor-pointer select-none">
+      <button className="swiper-button-next-custom absolute right-2 top-[calc(50%-2rem)] -translate-y-1/2 z-20 w-10 h-10 flex items-center justify-center bg-black/40 hover:bg-black/60 text-white rounded-full transition-colors cursor-pointer select-none">
         &#10095;
       </button>
+
+      {/* 🔗 詳しくはこちらボタン */}
+      <div className="mt-6 z-20">
+        <Link
+          href="/support-page" // 👈 遷移先のパスに変更してください
+          className="inline-flex items-center justify-center px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-full shadow-md transition-all transform hover:scale-105 text-sm md:text-base"
+        >
+          詳しくはこちら →
+        </Link>
+      </div>
     </div>
   );
 }
