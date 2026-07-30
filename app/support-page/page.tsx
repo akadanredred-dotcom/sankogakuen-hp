@@ -207,7 +207,7 @@ export default function SupportPage() {
             すべての応援動画・プロジェクト詳細
           </h1>
           <p className="text-sm md:text-base text-gray-600">
-            演舞を含むすべての応援動画を見て、練習の参考にしてください。各動画には歌詞も掲載しています。
+            演舞を含むすべての応援動画を通じて、私たちのこれまでの歩みと熱い想いをご覧ください。
           </p>
 
           <div className="pt-2 flex justify-center items-center gap-3">
@@ -248,10 +248,6 @@ export default function SupportPage() {
             </div>
 
             <div className="w-full md:w-1/2 flex flex-col justify-center space-y-4">
-              <span className="text-xs font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full w-fit">
-                VIDEO {item.id < 10 ? `0${item.id}` : item.id}{" "}
-                {item.category === "dance" ? "【演舞】" : "【応援】"}
-              </span>
               <h2 className="text-xl md:text-2xl font-bold text-gray-800">
                 {item.title}
               </h2>
