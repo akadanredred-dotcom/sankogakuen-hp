@@ -207,7 +207,7 @@ export default function SupportPage() {
             すべての応援動画・プロジェクト詳細
           </h1>
           <p className="text-sm md:text-base text-gray-600">
-            演舞を含むすべての応援動画を通じて、私たちのこれまでの歩みと熱い想いをご覧ください。
+            演舞を含むすべての応援動画を見て、練習の参考にしてください。各動画には歌詞も掲載しています。
           </p>
 
           <div className="pt-2 flex justify-center items-center gap-3">
