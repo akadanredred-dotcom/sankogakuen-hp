@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import Navbar from "../components/Navbar";
-
+// パスが異なる場合は適宜調整してください
+import Countdown from "../components/Countdown";
 const supportItems = [
   // --- 応援 (ID 1〜6) ---
   {
@@ -198,8 +199,14 @@ export default function SupportPage() {
   });
 
   return (
-    <main className="min-h-screen bg-gray-50 pt-24 pb-12 px-4 md:px-8">
+    <main className="min-h-screen bg-gray-50 pt-24 pb-12 px-4 md:px-8 relative">
       <Navbar />
+
+      {/* 右下に固定表示するカウントダウン */}
+      <div className="fixed bottom-6 right-6 z-[60] shadow-[0_10px_40px_-10px_rgba(220,38,38,0.5)] rounded-3xl overflow-hidden bg-white border-4 border-red-100 p-5 text-center">
+        {/* Countdownコンポーネントの配置 */}
+        <Countdown footerId="support-footer" />
+      </div>
 
       <div className="max-w-4xl mx-auto space-y-12 mt-6">
         <div className="text-center bg-white rounded-3xl shadow-lg p-8 space-y-4">
