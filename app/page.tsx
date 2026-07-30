@@ -1,4 +1,7 @@
-import { Metadata } from "next";
+"use client";
+
+import { useEffect, useState } from "react";
+
 import Hero from "./components/Hero";
 import SanFesSection from "./components/Main";
 import AkadanSection from "./components/react";
@@ -10,26 +13,77 @@ import Memories from "./components/Memories";
 import Countdown from "./components/Countdown";
 import News from "./components/News";
 import VideoCarousel from "./components/VideoCarousel";
-import ConfettiTrigger from "./components/ConfettiTrigger";
-// 🆕 切り出した紙吹雪コンポーネントをインポート
-
-
-export const metadata: Metadata = {
-  title: "豹牙HP",
-  description:
-    "笑顔・元気・メリハリを胸に、仲間とともに全力で勝利を目指す団です！",
-  icons: {
-    icon: "/assets/favicon.ico",
-    apple: "/assets/apple-touch-icon.png",
-  },
-};
+import { createClient } from "./utils/supabase/client";
 
 export default function Home() {
-  return (
-    <div className="min-h-screen bg-white text-slate-900 flex flex-col">
-      {/* 🆕 紙吹雪の自動トリガー */}
-      <ConfettiTrigger />
+  console.log("Tracking page view and checking milestone...");
 
+  const [specialEffect, setSpecialEffect] = useState(false);
+  const [milestoneNumber, setMilestoneNumber] = useState(50);
+
+  useEffect(() => {
+    // Prevent counting multiple times in the same session
+    if (sessionStorage.getItem("counted")) return;
+
+    async function trackAndCheckMilestone() {
+      try {
+        const supabase = createClient();
+        console.log("Supabase client created:", supabase);
+
+        // Call the Supabase function and get the returned view count integer
+        const { data: newCount, error } = await supabase.rpc(
+          "increment_page_view",
+          {
+            page_path: "/",
+          },
+        );
+        console.log("New view count:", newCount);
+
+        if (error) {
+          console.error("Failed to increment view count:", error.message);
+          return;
+        }
+
+        // Mark as counted for this session
+        sessionStorage.setItem("counted", "true");
+
+        // Check if the current view count is a multiple of 50 (50, 100, 150, 200...)
+        if (newCount && newCount > 0 && newCount % 50 === 0) {
+          setMilestoneNumber(newCount);
+          setSpecialEffect(true);
+        }
+      } catch (error) {
+        console.error("Error updating view counter:", error);
+      }
+    }
+
+    trackAndCheckMilestone();
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-white text-slate-900 flex flex-col relative">
+      {/* Special UI Overlay for every 50th visitor */}
+      {specialEffect && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 text-white">
+          <div className="text-center p-8 bg-red-600 rounded-xl shadow-2xl animate-bounce">
+            <h2 className="text-3xl font-bold mb-4">
+              🎉 祝・{milestoneNumber}人目の訪問者！ 🎉
+            </h2>
+            <p className="mb-6">
+              おめでとうございます！記念すべき{milestoneNumber}
+              人目のゲスト様です！
+            </p>
+            <button
+              onClick={() => setSpecialEffect(false)}
+              className="px-6 py-2 bg-white text-red-600 font-bold rounded-lg cursor-pointer hover:bg-gray-100 transition-colors"
+            >
+              サイトを見る
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Rest of your page layout */}
       <div className="relative flex-1 w-full">
         <Hero
           backgroundImage={"/img/hero-bg.png"}
