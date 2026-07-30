@@ -13,12 +13,21 @@ interface NewsItem {
 }
 
 const newsData: NewsItem[] = [
-  // 🆕 新しく追加：応援動画のお知らせ
+  // 🆕 新しく追加：応援ページへの案内お知らせ
+  {
+    id: "4",
+    date: "2026.07.09",
+    category: "重要",
+    title:
+      "🔥 新しい応援ページが公開されました！動画や掛け声をチェックしよう！",
+    href: "/support-page", // 👈 新しく作った応援ページへ直接ジャンプします
+  },
+  // 🆕 応援動画のお知らせ（必要に応じてページ内リンク用として残す場合）
   {
     id: "3",
     date: "2026.07.09",
     category: "お知らせ",
-    title: "🎬 仲間と共に全力で挑む！応援動画が公開されました！",
+    title: "🎬 仲間と共に全力で挑む！応援動画カルーセルが公開されました！",
     href: "video-carousel", // 👈 URLの末尾を汚さないよう「#」を外してID名だけにします
   },
   {
@@ -98,7 +107,7 @@ export default function News() {
               <li key={item.id} className="py-2">
                 {item.href ? (
                   isAnchorLink ? (
-                    // 2-A. 【追加】URLを変えずにスクロールするページ内リンク用のボタン
+                    // 2-A. URLを変えずにスクロールするページ内リンク用のボタン
                     <button
                       onClick={() => {
                         const element = document.getElementById(item.href!);
@@ -124,7 +133,7 @@ export default function News() {
                       </span>
                     </button>
                   ) : (
-                    // 1. 通常の別ページリンク（タイムスケジュールなど）
+                    // 1. 通常の別ページリンク（応援ページやタイムスケジュールなど）
                     <Link
                       href={item.href}
                       className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6 py-4 px-2 transition-colors duration-200 hover:bg-zinc-900/50 rounded-lg group"
