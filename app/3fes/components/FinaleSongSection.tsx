@@ -3,7 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function FinaleSongSection() {
-  const youtubeUrl = "https://www.youtube.com/watch?v=pLeshxZIlII";
+  // 遷移先のパス（例: "/songs" や "/about-finale" など）に変更してください
+  const pageUrl = "/songs";
 
   return (
     <section className="w-full max-w-[1442px] mx-auto px-8 py-16 md:px-24 flex flex-col md:flex-row items-center justify-between gap-8 relative bg-white/50 overflow-hidden">
@@ -30,20 +31,17 @@ export default function FinaleSongSection() {
 
         <div className="flex flex-wrap gap-4 pt-2">
           <Link
-            href={youtubeUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={pageUrl}
+            // 別タブで開く必要がない場合は target="_blank" や rel 属性を削除しても構いません
             className="inline-flex items-center justify-center bg-black text-white px-8 py-3 rounded-md font-medium text-sm hover:bg-gray-800 transition-colors shadow-sm"
           >
-            曲はこちら
+            詳しく見る
           </Link>
         </div>
       </div>
 
       <Link
-        href={youtubeUrl}
-        target="_blank"
-        rel="noopener noreferrer"
+        href={pageUrl}
         className="w-full md:w-[45%] relative aspect-video md:aspect-[4/3] rounded-2xl overflow-hidden shadow-md bg-white/60 border border-gray-100 z-10 block transition-transform duration-300 hover:scale-[1.01] cursor-pointer"
       >
         <Image
