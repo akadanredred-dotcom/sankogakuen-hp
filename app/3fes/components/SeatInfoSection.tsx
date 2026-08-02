@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link"; // Linkをインポート
 
 export default function SeatInfoSection() {
   return (
@@ -22,13 +23,37 @@ export default function SeatInfoSection() {
           </p>
         </div>
 
-        <div className="pl-4 space-y-3 text-sm md:text-base text-gray-600 leading-relaxed">
+        <div className="pl-4 space-y-6 text-sm md:text-base text-gray-600 leading-relaxed">
           <p>
             当日の座席配置は以下の通りです。
             <br />
             赤団の応援席は、渋谷口の南エリアになります。
             <br />
           </p>
+
+          {/* 別ページへ飛ばす Link コンポーネント */}
+          <div>
+            <Link
+              href="/3fes/seat-map" // 正しいパスに修正済み
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#DC2626] text-white font-medium shadow-md hover:bg-[#b91c1c] transition-colors duration-200"
+            >
+              <span>詳しくはこちら</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-4 h-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </Link>
+          </div>
         </div>
       </div>
 
