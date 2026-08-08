@@ -16,7 +16,7 @@ type SchoolData = {
 // 英語のキー（ID）を使用するように変更
 const schoolSeatData: Record<string, SchoolData> = {
   tokyoSweets: {
-    name: "東京スイーツ＆カフェ専門学校",
+    name: "東京立川こども専門学校",
     color: "bg-purple-500 text-white",
     description: "1階：H列（全席） / 2階：半分",
     image: "/img/seat6.jpg",
@@ -24,7 +24,7 @@ const schoolSeatData: Record<string, SchoolData> = {
     scale: "scale-110",
   },
   tokyoTachikawa: {
-    name: "東京立川こども専門学校",
+    name: "東京リゾート＆スポーツ専門学校",
     color: "bg-yellow-400 text-gray-900",
     description: "1階：J列（全部） / 2階：H列（半分）",
     image: "/img/seat7.jpg",
@@ -32,7 +32,7 @@ const schoolSeatData: Record<string, SchoolData> = {
     scale: "scale-110",
   },
   tokyoResort: {
-    name: "東京リゾート＆スポーツ専門学校",
+    name: "東京ビューティー＆ブライダル専門学校",
     color: "bg-blue-500 text-white",
     description: "1階：K列（全部） / 2階：J列（3分の2）",
     image: "/img/seat8.jpg",
@@ -40,7 +40,7 @@ const schoolSeatData: Record<string, SchoolData> = {
     scale: "scale-110",
   },
   tokyoBeauty: {
-    name: "東京ビューティー＆ブライダル専門学校",
+    name: "学校東京みらいAI&IT専門学校",
     color: "bg-red-500 text-white",
     description: "1階：L列（全部） / 2階：J列（残り3分の1）、K列（2行）",
     image: "/img/seat9.jpg",
@@ -48,7 +48,7 @@ const schoolSeatData: Record<string, SchoolData> = {
     scale: "scale-110",
   },
   tokyoMirai: {
-    name: "東京みらいAI&IT専門学校",
+    name: "東京スイーツ＆カフェ専門学校",
     color: "bg-green-500 text-white",
     description: "2階：K列（全部）、L列（半分）",
     image: "/img/seat10.jpg",

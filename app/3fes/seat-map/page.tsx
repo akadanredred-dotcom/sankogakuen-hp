@@ -15,40 +15,40 @@ type SchoolData = {
 };
 
 const schoolSeatData: Record<string, SchoolData> = {
-  "東京スイーツ＆カフェ専門学校": {
-    name: "東京スイーツ＆カフェ専門学校",
+  tokyoSweets: {
+    name: "東京立川こども専門学校",
     color: "bg-purple-500 text-white",
     description: "1階：H列（全席） / 2階：半分",
     image: "/img/seat7.jpg",
     transformOrigin: "65% 20%",
     scale: "scale-110",
   },
-  東京立川こども専門学校: {
-    name: "東京立川こども専門学校",
+  tokyoTachikawa: {
+    name: "東京リゾート＆スポーツ専門学校",
     color: "bg-yellow-400 text-gray-900",
     description: "1階：J列（全部） / 2階：H列（半分）",
     image: "/img/seat8.jpg",
     transformOrigin: "35% 20%",
     scale: "scale-110",
   },
-  "東京リゾート＆スポーツ専門学校": {
-    name: "東京リゾート＆スポーツ専門学校",
+  tokyoResort: {
+    name: "東京ビューティー＆ブライダル専門学校",
     color: "bg-blue-500 text-white",
     description: "1階：K列（全部） / 2階：J列（3分の2）",
     image: "/img/seat9.jpg",
     transformOrigin: "35% 80%",
     scale: "scale-110",
   },
-  "東京ビューティー＆ブライダル専門学校": {
-    name: "東京ビューティー＆ブライダル専門学校",
+  tokyoBeauty: {
+    name: "東京みらいAI&IT専門学校",
     color: "bg-red-500 text-white",
     description: "1階：L列（全部） / 2階：J列（残り3分の1）、K列（2行）",
     image: "/img/seat10.jpg",
     transformOrigin: "15% 80%",
     scale: "scale-110",
   },
-  "東京みらいAI&IT専門学校": {
-    name: "東京みらいAI&IT専門学校",
+  tokyoMirai: {
+    name: "東京スイーツ＆カフェ専門学校",
     color: "bg-green-500 text-white",
     description: "2階：K列（全部）、L列（半分）",
     image: "/img/seat6.jpg",
@@ -100,9 +100,9 @@ export default function SeatMapPage() {
             className="border border-gray-300 rounded-xl p-3 w-full md:w-96 bg-white shadow-inner text-gray-800 font-medium focus:outline-none focus:ring-2 focus:ring-red-500"
           >
             <option value="">-- すべての全体図を表示 --</option>
-            {Object.keys(schoolSeatData).map((schoolName) => (
-              <option key={schoolName} value={schoolName}>
-                {schoolName}
+            {Object.entries(schoolSeatData).map(([key, data]) => (
+              <option key={key} value={key}>
+                {data.name}
               </option>
             ))}
           </select>
