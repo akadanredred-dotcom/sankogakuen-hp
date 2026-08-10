@@ -133,6 +133,14 @@ const supportItems = [
     ],
   },
   {
+    id: 12,
+    src: "/movise/movise12.mp4",
+    title: "（タイトルの内容を必要に応じて設定してください）",
+    category: "dance",
+    description: "（説明を記載してください）",
+    lyrics: ["（歌詞やセリフなどを記載してください）"],
+  },
+  {
     id: 9,
     src: "/movise/movise9.mp4",
     title: "エール交換",
