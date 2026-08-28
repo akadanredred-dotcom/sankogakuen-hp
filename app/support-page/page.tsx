@@ -4,6 +4,7 @@ import { useState } from "react";
 import Navbar from "../components/Navbar";
 // パスが異なる場合は適宜調整してください
 import Countdown from "../components/Countdown";
+
 const supportItems = [
   // --- 応援 (ID 1〜6) ---
   {
@@ -99,7 +100,7 @@ const supportItems = [
     lyrics: ["も もり もりあ", "盛り上がりが足りない！", "（繰り返し）"],
   },
 
-  // --- 演舞 (ID 7〜11) ---
+  // --- 演舞 (ID 7, 8, 12, 9, 10, 11) ---
   {
     id: 7,
     src: "/movise/movise7.mp4",
@@ -135,10 +136,21 @@ const supportItems = [
   {
     id: 12,
     src: "/movise/movise12.mp4",
-    title: "（タイトルの内容を必要に応じて設定してください）",
+    title: "音源1",
     category: "dance",
-    description: "（説明を記載してください）",
-    lyrics: ["（歌詞やセリフなどを記載してください）"],
+    description: `声を一つに！`,
+    lyrics: [
+      "豹牙！×２",
+      "は！×３",
+      "は・は・は・は！",
+      "豹牙！×４",
+      "それそれそれそれ！×２",
+      "は！・は！・は！×４",
+      "おーーーーー×２",
+      "（ウェーブ）",
+      "しゃあ！！",
+      "",
+    ],
   },
   {
     id: 9,
@@ -207,7 +219,7 @@ export default function SupportPage() {
   });
 
   return (
-    <main className="min-h-screen bg-gray-50 pt-24 pb-12 px-4 md:px-8 relative">
+    <main className="min-h-screen bg-red-600 pt-24 pb-12 px-4 md:px-8 relative">
       <Navbar />
 
       {/* 右下に固定表示するカウントダウン */}
@@ -267,11 +279,11 @@ export default function SupportPage() {
                 {item.title}
               </h2>
 
-              <p className="text-gray-900 font-bold text-base md:text-lg border-l-4 border-red-600 pl-3">
+              <p className="text-gray-900 font-bold text-base md:text-lg border-l-4 border-red-600 pl-3 whitespace-pre-line">
                 {item.description}
               </p>
 
-              <div className="bg-gray-50 p-4 rounded-xl space-y-1.5 text-gray-700 text-sm md:text-base leading-relaxed">
+              <div className="bg-red-50 p-4 rounded-xl space-y-1.5 text-gray-700 text-sm md:text-base leading-relaxed">
                 {item.lyrics.map((line, i) => (
                   <p key={i}>{line}</p>
                 ))}
@@ -291,7 +303,7 @@ export default function SupportPage() {
         <div className="text-center pt-4">
           <a
             href="/"
-            className="inline-block px-8 py-3 bg-gray-800 hover:bg-gray-900 text-white font-medium rounded-full shadow transition-colors text-sm md:text-base"
+            className="inline-block px-8 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-full shadow-lg shadow-red-600/30 transition-all text-sm md:text-base"
           >
             ← トップページへ戻る
           </a>
