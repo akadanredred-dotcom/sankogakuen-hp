@@ -100,7 +100,24 @@ const supportItems = [
     lyrics: ["も もり もりあ", "盛り上がりが足りない！", "（繰り返し）"],
   },
 
-  // --- 演舞 (ID 7, 8, 12, 9, 10, 11) ---
+  // --- 演舞 (ID 13, 7, 8, 12, 9, 10, 11) ---
+  {
+    id: 13,
+    src: "/movise/movise13.mp4",
+    title: "一連の流れ",
+    category: "dance",
+    description:
+      "演舞の通しの流れを確認しましょう（タップすると各練習へジャンプします）",
+    // リンク先のIDとテキストを紐付けた形式に変更
+    links: [
+      { text: "1. 入場前", targetId: "video-7" },
+      { text: "2. 最初の声出し", targetId: "video-8" },
+      { text: "3. 音源1", targetId: "video-12" },
+      { text: "4. エール交換", targetId: "video-9" },
+      { text: "5. 太鼓１", targetId: "video-10" },
+      { text: "6. 太鼓２", targetId: "video-11" },
+    ],
+  },
   {
     id: 7,
     src: "/movise/movise7.mp4",
@@ -224,7 +241,6 @@ export default function SupportPage() {
 
       {/* 右下に固定表示するカウントダウン */}
       <div className="fixed bottom-6 right-6 z-[60] shadow-[0_10px_40px_-10px_rgba(220,38,38,0.5)] rounded-3xl overflow-hidden bg-white border-4 border-red-100 p-5 text-center">
-        {/* Countdownコンポーネントの配置 */}
         <Countdown footerId="support-footer" />
       </div>
 
@@ -284,9 +300,20 @@ export default function SupportPage() {
               </p>
 
               <div className="bg-red-50 p-4 rounded-xl space-y-1.5 text-gray-700 text-sm md:text-base leading-relaxed">
-                {item.lyrics.map((line, i) => (
-                  <p key={i}>{line}</p>
-                ))}
+                {/* 一連の流れ（ID:13）の場合はリンク付きで表示 */}
+                {item.links
+                  ? item.links.map((link, i) => (
+                      <p key={i}>
+                        <a
+                          href={`#${link.targetId}`}
+                          className="text-red-600 font-bold hover:underline inline-flex items-center gap-1"
+                        >
+                          {link.text} ➔
+                        </a>
+                      </p>
+                    ))
+                  : // 通常の歌詞などの場合
+                    item.lyrics?.map((line, i) => <p key={i}>{line}</p>)}
               </div>
             </div>
           </div>
